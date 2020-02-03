@@ -1,0 +1,858 @@
+<style>
+	/* .dt-buttons{
+    float:left;
+	}
+	.dataTables_info{
+		float:left;
+	} */
+	a.paginate_button{
+    color:red !important;
+}
+a.paginate_button.current{
+    color:red !important;
+}
+</style>
+<app-profile-topbar></app-profile-topbar>
+ <div class="main-content">
+
+  
+    <!-- Header (account) -->
+ <header class="header-account-page bg-primary d-flex align-items-end">
+      <!-- Header container -->
+      <div class="container">
+        <div class="row">
+          <div class=" col-lg-12">
+            <!-- Salute + Small stats -->
+          
+            <!-- Account navigation -->
+            <div class="d-flex">
+				<div class="btn-group btn-group-nav shadow nav nav-tabs" id="myTab" role="tablist" aria-label="Basic example">
+					<div class="btn-group">
+					  <a href="#general" aria-controls="general" (click)="tab='tab1'" [ngClass]="{'active' : tab==='tab1'}" data-toggle="tab" role="tab" id="general-tab" class="btn btn-icon shadow btn-neutral active">
+						  <span class="btn-inner--icon"><i class="fas fa-briefcase"></i></span>
+						  <span class="btn-inner--text d-none d-md-inline-block">General</span>
+						  <span class="btn-inner--icon"><i class="fas fa-caret-right"></i></span>
+						</a>
+					</div>
+					<div class="btn-group" role="group">
+					  <a id="design-tab" data-toggle="tab" href="#design" (click)="tab='tab2'"   [ngClass]="{'active' : tab==='tab2'}" role="tab" aria-controls="design" aria-selected="true" class="btn btn-icon shadow btn-neutral">
+						  <span class="btn-inner--icon"><i class="fas fa-palette"></i></span>
+						  <span class="btn-inner--text d-none d-md-inline-block">Design</span>
+						  <span class="btn-inner--icon"><i class="fas fa-caret-right"></i></span>
+						</a>
+					</div>
+					<div class="btn-group" role="group">
+					  <a id="triggers-tab" data-toggle="tab" href="#triggers" (click)="tab='tab3'"  [ngClass]="{'active' : tab==='tab3'}" role="tab" aria-controls="triggers" aria-selected="true" class="btn btn-icon shadow btn-neutral">
+						  <span class="btn-inner--icon"><i class="fas fa-crosshairs"></i></span>
+						  <span class="btn-inner--text d-none d-md-inline-block">Triggers</span>
+						  <span class="btn-inner--icon"><i class="fas fa-caret-right"></i></span>
+						</a>
+					</div>
+					<div class="btn-group" role="group">
+					  <a id="intigration-tab" data-toggle="tab" href="#intigration" (click)="tab='tab4'"   [ngClass]="{'active' : tab==='tab4'}" role="tab" aria-controls="intigration" aria-selected="true" class="btn btn-icon shadow btn-neutral">
+						  <span class="btn-inner--icon"><i class="fas fa-object-group"></i></span>
+						  <span class="btn-inner--text d-none d-md-inline-block">Integration</span>
+						  <span class="btn-inner--icon"><i class="fas fa-caret-right"></i></span>
+						</a>
+					</div>
+					<div class="btn-group ml-1" role="group">
+					  <a id="result-tab" data-toggle="tab" href="#result" (click)="tab='tab5'" [ngClass]="{'active' : tab==='tab5'}" role="tab" aria-controls="result" aria-selected="true" class="btn btn-icon shadow btn-neutral">
+						  <span class="btn-inner--icon"><i class="fas fa-industry"></i></span>
+						  <span class="btn-inner--text d-none d-md-inline-block">Result</span>
+						</a>
+					</div>
+				  </div>
+				</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="slice">
+	
+	<div class="container">
+        <div class="row row-grid">
+			<div class="col-lg-12">
+				<div class="tab-content" id="myTabContent">
+					<div [ngClass]="{'active show' : tab==='tab1'}" class="tab-pane fade show active col-md-8" id="general" role="tabpanel" aria-labelledby="general-tab">
+				   <form [formGroup]="addFor">
+					  <!-- Title -->             
+					  <div class="mt-1">
+						<!-- Title -->
+						<div class="actions-toolbar mb-0">
+						  <h6 class="mb-1 font-weight-bold">Name your wheel</h6>
+						  <!-- <p class="text-sm text-muted mb-0">for internal use only</p> -->
+						</div>
+						<!-- New address form -->
+						<div class="row">
+						  <div class="col-md-12">
+							<div class="form-group">
+							  <input class="form-control" type="text" placeholder="Enter the name of your wheel" formControlName="wheelName">
+							  
+							</div>
+						  </div>
+						  <div class="col-md-12">
+							  <div class="form-group">
+								<div class="actions-toolbar py-0 mb-0">
+									<h6 class="mb-1 font-weight-bold">Popup Type</h6>
+								 </div>
+							  <select class="form-control" formControlName="popupType">
+							  <option value="wheelspinning" [selected]="true">Wheel spinning</option>
+							</select>
+							</div>
+						  </div>
+						  <div class="col-md-12">
+							<div class="form-group">
+								<div class="actions-toolbar py-0 mb-0">
+									<h6 class="mb-1 font-weight-bold">Form Type</h6>
+								</div>
+							  <select class="form-control" formControlName="formType">
+							  <option value="email" [selected]="true">Email</option>
+							</select>
+							</div>
+						  </div>
+						</div>
+					  </div>           
+					  <div class="mt-1 mb-3 text-right">
+						<!-- <button type="button" class="btn btn-sm btn-secondary">Save Changes</button> -->
+						<button type="button" class="btn btn-sm btn-secondary" (click)="update('generaltabsavehere')">
+							<span [ngClass]="{'visibles': generalTabSave== 1, 'hiddens':generalTabSave== 2 }">Save Changes</span>
+							<span [ngClass]="{'visibles': generalTabSave== 2, 'hiddens':generalTabSave== 1 }" class="spinner-border spinner-border-sm"></span>
+						</button>
+						<button type="button" class="btn btn-sm btn-success" id="nextstep" (click)="next('generaltabnext')">
+						
+							<span [ngClass]="{'visibles': generalTabSavenext== 1, 'hiddens':generalTabSavenext== 3 }">Next step</span>
+							<span [ngClass]="{'visibles': generalTabSavenext== 3, 'hiddens':generalTabSavenext== 1 }" class="spinner-border spinner-border-sm"></span>
+						</button>
+					</div>
+					</form>
+					</div>   
+			  
+					<div [ngClass]="{'active show' : tab==='tab2'}" class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="design-tab">
+					<div class="row">
+					<div class="col-md-12">
+							<div class="card">
+								<div class="card-header pt-2 pb-2">
+									<h5 class="card-title mb-0 mt-2 mb-2">Slices</h5>
+							</div>
+							<div class="card-body">
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<button class="btn btn-sm btn-outline-dark button_slices" type="button" data-toggle="modal" data-target="#modal-change-username">Configure slices</button>
+								</div>
+							</div>
+							</div>
+							</div>
+							<div class="card">
+								<div class="card-header pt-2 pb-2">
+									<h5 class="card-title mb-0 mt-2 mb-2">Position</h5>
+									<span tooltip="TEST TOOLTIP" z-index="999999" placement="top" show-delay="100">
+										<i class="fa fa-question-circle"></i>
+									</span>
+							</div>
+							<div class="card-body">
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" checked="true" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+										<label class="custom-control-label" for="customRadioInline1">Left</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+										<label class="custom-control-label" for="customRadioInline2">Right</label>
+									</div>
+								</div>
+							</div>	
+							</div>
+							</div>
+							<div class="card">
+								<div class="card-header pt-2 pb-2">
+									<h5 class="card-title mb-0 mt-2 mb-2">Background</h5>
+								</div>
+							<div class="card-body">
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<button class="btn btn-sm btn-outline-dark" type="button" data-toggle="modal" data-target="#modal-configure-background">Configure Background</button>
+								</div>
+							</div>
+							</div>
+							</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-md-12">
+					<div class="customBox">
+						<div class="card-header d-flex justify-content-between align-items-center border-bottom">
+								<div>
+									<h5 class="card-title mb-0">Start State</h5>
+								</div>
+								<div class="border border-dark preview_outer">
+									<button class="btn btn-default desktop_preview pl-3 pr-3">
+										<img src="../../../../assets/images/preview-desktop.png">
+									</button>
+									<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary">
+										<img src="../../../../assets/images/preview-mobile.png">
+									</button>
+									<h5 class="pr-3">Preview</h5>
+								</div>
+						</div>
+					
+					<div class="row">
+					<div class="col-md-8">
+						<!-- Preview Desktop section-->
+						<div class="columnBackground">
+						<div class="row">
+							<div class="col-md-6 pb-md-0 pb-sm-5">
+							<img src="./assets/widget-wheel.png">
+							</div>
+						<div class="col-md-6 pr-4 pl-4">
+						<form>          
+							<div class="mt-md-10 mt-sm-5">
+								<h4 class="mb-1 text-center headColor"> <span [innerHTML]="headingvalues"></span></h4>
+								<p class="text-sm mb-0 text-center subHeadingColor">{{labelvalues}}</p>
+								<div class="form-group mt-3">
+									<input class="form-control" type="text" placeholder="{{placeholderText}}">
+								</div>
+								<div class="form-group">
+									<button class="form-control btn customButton" type="button">{{buttonvalues}}</button>
+								</div>
+								<p class="text-right text-sm mb-0 text-left subHeadingColor">{{declineText}} <i class="fa fa-times"></i></p>
+							</div> 
+						</form>
+						</div>
+						</div>
+						</div>
+						<!-- Preiew Desktop Section End -->
+
+					</div>
+					<div class="col-md-4 ">
+					<div class="tab-content form_fields_card" id="myTabContent">
+					  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					  <div class="card border-0">
+							<div class="card mb-0 border-0">
+								<span tooltip="TOOL TIP " z-index="999999" placement="top" show-delay="400">
+									<i class="fa fa-question-circle"></i>
+								</span>
+								<div class="card-body">
+									<form  [formGroup]="widgetpreform" class="needs-validation" novalidate>
+										<div class="form-row">
+										<div class="col-md-12 mb-3">
+											<label for="validationCustom01">Title</label>
+											<input name="titleText" [(colorPicker)]="titleText" [style.background]="titleText" class="color_picker" [cpPosition]="'left'"/>
+											<input type="text" [(ngModel)]="headingvalues" class="form-control" id="validationCustom01" placeholder="" value="" required formControlName="titleText"  name="titleText">
+										</div>
+											<div class="col-md-12 mb-3">
+											<label for="validationCustom02">Subtitle</label>
+											<input name="subTitleColor" [(colorPicker)]="subTitleColor" [style.background]="subTitleColor" class="color_picker" [cpPosition]="'left'"/>
+											<input type="text" [(ngModel)]="labelvalues" class="form-control" id="validationCustom02" placeholder="" value="" required formControlName="subtitleText"  name="subtitleText">
+											</div>
+											<div class="col-md-12 mb-3">
+											<label for="validationCustom02">Placeholder Text</label>
+											<input type="text" [(ngModel)]="placeholderText" class="form-control" placeholder="" value="{{placeholderText}}" required formControlName="placeholderText" name="placeholderText">
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="col-md-12 mb-3">
+											<label for="validationCustom03">Button</label>
+											<input name="buttonText" [(colorPicker)]="buttonText" [style.background]="buttonText" class="color_picker" [cpPosition]="'left'"/>
+											<input name="buttonBG" [(colorPicker)]="buttonBG" [style.background]="buttonBG" class="color_picker mr-1" [cpPosition]="'left'"/>
+											<input type="text" [(ngModel)]="buttonvalues" class="form-control" id="validationCustom03" placeholder="" required formControlName="buttonText"  name="buttonText">
+											</div>
+											<div class="col-md-12 mb-3">
+											<label for="validationCustom04">Decline Text</label>
+											<input name="declineTextColor" [(colorPicker)]="declineTextColor" [style.background]="declineTextColor" class="color_picker" [cpPosition]="'left'"/>
+											<input type="text" class="form-control" id="validationCustom04" [(ngModel)]="declineText" placeholder="" required formControlName="declineText"  name="declineText">
+											</div>
+										</div>
+										<div class="custom_label custom-control custom-switch pt-md-1 pt-sm-0 mb-2">
+											<input type="checkbox" checked class="custom-control-input" id="logo">
+											<label class="custom-control-label custom_label_position" for="logo">LOGO
+											<span tooltip="Logo" z-index="999999" placement="top" show-delay="100">
+												<i class="fa fa-question-circle"></i>
+											</span>
+										</label>
+										
+										</div>
+										
+										<div class="col-md-12 mb-3 pl-0 pr-0 image-upload">
+											<label for="file-input">
+												<img src="../../../../assets/images/upload-box.png" style="cursor: pointer;width:100%"/>
+											  </label>
+											<input id="file-input" type="file" class="form-control"required formControlName="logo" name="logo">
+										</div>
+										<div class="custom_label custom-control custom-switch pt-md-1 pt-sm-0 mb-2">
+											<input type="checkbox" checked class="custom-control-input" id="gdpr">
+											<label class="custom-control-label custom_label_position" for="gdpr">GDPR
+											<span tooltip="GDPR" placement="bottom" show-delay="100">
+												<i class="fa fa-question-circle"></i>
+											</span>
+										</label>
+										</div>
+										<div class="col-md-12 mb-3 pl-0 pr-0">
+											<input type="text" class="form-control"required formControlName="gdpr" name="gdpr">
+										</div>
+										<div class="custom_label custom-control custom-switch pt-md-1 pt-sm-0 mb-2">
+											<input type="checkbox" checked class="custom-control-input" id="collect-name">
+											<label class="custom-control-label custom_label_position" for="collect-name">Collect Name</label><br>
+										</div>
+										<div class="col-md-12 mb-3 pl-0 pr-0">
+											<input type="text" class="form-control"required formControlName="collectName"  name="collectName">
+										</div>
+										
+										</form>
+								</div>
+								
+							</div>
+						</div>
+						
+						</div>
+						</div> 
+						<div class="mt-3 mb-3 text-right mr-4">
+							<button type="button" class="btn btn-sm btn-secondary" (click)="widgetfirstupdate()">
+								<span [ngClass]="{'visibles': designTabWidgetSave==1, 'hiddens':designTabWidgetSave==2 }">Save Changes</span>
+								<span [ngClass]="{'visibles': designTabWidgetSave==2, 'hiddens':designTabWidgetSave==1 }" class="spinner-border spinner-border-sm"></span>
+							</button>
+							
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					<div class="row ">
+						<div class="col-md-12">
+						</div>
+					<div class="col-md-12 mt-4">
+					<div class="customBox">
+					<div class="card-header d-flex justify-content-between align-items-center border-bottom">
+							<div>
+								<h5 class="card-title mb-0">Win State</h5>
+							</div>
+							<div class="border border-dark preview_outer">
+								<button class="btn btn-default desktop_preview pl-3 pr-3">
+									<img src="../../../../assets/images/preview-desktop.png">
+								</button>
+								<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary">
+									<img src="../../../../assets/images/preview-mobile.png">
+								</button>
+								<h5 class="pr-3">Preview</h5>
+							</div>
+					</div>
+					<div class="row">
+					<div class="col-md-8">
+						<div class="columnBackground">
+							<div class="row">
+								<div class="col-md-6 pb-md-0 pb-sm-5">
+								<img src="./assets/widget-wheel-success.png">
+								</div>
+							<div class="col-md-6 pr-4 pl-4">
+							<form>          
+								<div class="mt-md-10 mt-sm-5">
+									<h4 class="mb-1 text-left headColor"> <span [innerHTML]="headingvaluesSuccess"></span></h4>
+									<p class="text-sm mb-0 text-left subHeadingColor">{{labelvaluesSuccess}}</p>
+									<div class="form-group mt-3">
+										<input class="form-control" type="text" name="emailSuccess" placeholder="10" name="emailInputPlaceholder">
+									</div>
+									<div class="form-group">
+										<button class="form-control btn customButton" type="button">{{buttonvaluesSuccess}}</button>
+									</div>
+									<p class="text-right text-sm mb-0 text-left subHeadingColor">{{closeText}}  <i class="fa fa-times"></i></p>
+								</div> 
+							</form>
+							</div>
+							</div>
+						</div>
+						</div>
+						<div class="col-md-4">
+								<div class="card border-0 form_fields_card">
+
+									<ul class="nav nav-tabs" id="myTab" role="tablist">
+										<li class="nav-item">
+										  <a class="nav-link active" id="winDiscount-tab" data-toggle="tab" href="#winDiscount" role="tab" aria-controls="winDiscount" aria-selected="true">Win Discount</a>
+										</li>
+										<li class="nav-item">
+										  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Win Product</a>
+										</li>
+										<li class="nav-item">
+										  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Loose</a>
+										</li>
+									  </ul>
+									  <div class="tab-content" id="myTabContent">
+										  <!-- Win Discount Tab start-->
+										<div class="tab-pane fade show active" id="winDiscount" role="tabpanel" aria-labelledby="winDiscount-tab">
+											
+											<form [formGroup]="widgetform" class="needs-validation" novalidate>
+												<div class="card-body">
+												<div class="form-row">
+												 <label for="validationCustom021" class="col-md-11">Redirect URL ? </label>
+												<div class="custom-control custom-switch"style="padding-left:20px !important;">
+												<input type="checkbox" class="custom-control-input" id="customSwitch3" [checked]="true" formControlName="buttonRedirect" name="buttonRedirect">
+												 <label class="custom-control-label triggerSwitch" for="customSwitch3"></label>
+												 </div>
+												  <div class="col-md-12 mb-3">
+												  <input type="text" class="form-control"  formControlName="buttonRedirectURL"  name="buttonRedirectURL">
+												  </div>
+												  </div>	
+												 
+														<div class="form-row">
+														<div class="col-md-12 mb-3">
+															<label for="validationCustom011">Title</label>
+															<input type="text"  [(ngModel)]="headingvaluesSuccess" class="form-control" id="validationCustom011" placeholder="" value="" required formControlName="titleText"  name="titleText">
+															</div>
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom021">Subtitle</label>
+															<input type="text"  [(ngModel)]="labelvaluesSuccess" class="form-control" id="validationCustom021" placeholder="" value="" required formControlName="subtitleText"  name="subtitleText">
+															</div>
+														</div>
+														<div class="form-row">
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom031">Button</label>
+															<input name="buttonTextWin" [(colorPicker)]="buttonTextWin" [style.background]="buttonTextWin" class="color_picker" [cpPosition]="'left'"/>
+															<input name="buttonBGWin" [(colorPicker)]="buttonBGWin" [style.background]="buttonBGWin" class="color_picker mr-1" [cpPosition]="'left'"/>
+															<input type="text"  class="form-control" [(ngModel)]="buttonvaluesSuccess" id="validationCustom031" placeholder="" required formControlName="buttonText"  name="buttonText">
+															</div>
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom041">Close Text</label>
+															<input type="text" class="form-control" id="validationCustom041"  placeholder="" [(ngModel)]="closeText" required formControlName="declineText"  name="declineText">
+															</div>
+															<div class="custom_label custom-control custom-switch pt-md-1 pt-sm-0 mb-2">
+																<input type="checkbox" checked class="custom-control-input" id="discountBar">
+																<label class="custom-control-label custom_label_position" for="discountBar">Discount Bar
+																<span tooltip="discount bar" placement="bottom" show-delay="100">
+																	<i class="fa fa-question-circle"></i>
+																</span>
+															</label>
+															</div>
+															<div class="col-md-12 mb-3 pl-0 pr-0">
+																<input type="text" class="form-control"required formControlName="discountBar" name="discountBar">
+															</div>
+															<div class="col-md-12 mb-3">
+																<label for="validationCustom041">Countdown Timer</label>
+																<input type="number" class="form-control" id="validationCustom041" required formControlName="countdownTimer"  name="countdownTimer">
+																</div>
+														</div>
+													</div>
+													
+												</form>
+
+										</div>
+										<!-- Win Discount Tab End-->
+
+										<!-- Win Product Tab start-->
+
+										<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Win Product</div>
+
+										<!-- Win Product Tab End-->
+
+										<!-- Loose Tab start-->
+										<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Loose</div>
+										<!-- Loose Tab end-->
+									  </div>
+								</div>
+								<div class="mt-1 mb-3 mr-4 text-right">
+									<button type="button" class="btn btn-sm btn-secondary" (click)="widgetupdate('widgettabsavehere')">
+										<span [ngClass]="{'visibles': designTabSuccessSave== 1, 'hiddens':designTabSuccessSave== 2}">Save Changes</span>
+										<span [ngClass]="{'visibles': designTabSuccessSave== 2, 'hiddens':designTabSuccessSave== 1 }" class="spinner-border spinner-border-sm"></span>
+									</button>
+									<button type="button" class="btn btn-sm btn-success" id="nextstep" (click)="nexttwo('widgettabnext')">
+										<span [ngClass]="{'visibles': designTabSuccessSavenext== 1, 'hiddens':designTabSuccessSavenext== 3}">Next step</span>
+										<span [ngClass]="{'visibles': designTabSuccessSavenext== 3, 'hiddens' :designTabSuccessSavenext== 1 }" class="spinner-border spinner-border-sm"></span>
+									</button>	
+								</div>
+						</div>
+					</div>
+					</div>
+					</div>
+					<!-- 
+					 -->
+					</div>
+					</div>
+			  
+					<div [ngClass]="{'active show' : tab==='tab3'}" class="tab-pane fade col-md-8" id="triggers" role="tabpanel" aria-labelledby="triggers-tab">
+					  <form [formGroup]="addTrigger">
+					  <!-- Title -->             
+					  <div class="mt-1">
+						<!-- Title -->
+						<div class="actions-toolbar  mb-sm-0 py-sm-0 py-md-2 mb-md-2">
+						  <h5 class="mb-1">Triggers</h5>
+						</div>
+						<!-- New address form -->
+						<div class="row">
+						  <div class="col-md-3">
+							<div class="custom-control custom-switch pt-md-1 pt-sm-0 mb-2">
+								<!-- <input type="checkbox" checked class="custom-control-input" id="check-privacy"> -->
+								<input type="checkbox" class="custom-control-input" id="customSwitch1" [checked]="true" formControlName="delayActive"  name="delayActive">
+                    			<label class="custom-control-label triggerSwitch" for="customSwitch1">Display after</label>
+								<!-- <label class="custom-control-label" for="check-privacy">I want to show</label> -->
+							</div>
+						  </div> 
+						  <div class="col-md-4 pl-md-0 pd-sm-1 pl-md-1">
+							<div class="form-group">
+							  <select class="form-control custom-select-sm" formControlName="delayTime" name="delayTime">
+							  <option value="0 seconds" [selected]="true">0 seconds</option>
+							  <option value="5 seconds">5 seconds</option>
+							  <option value="10 seconds">10 seconds</option>
+							  <option value="30 seconds">30 seconds</option>
+							</select>
+							</div>
+						  </div>
+						</div>
+						<div class="row">
+						  <div class="col-md-5">
+							<div class="custom-control custom-switch">
+								<!-- <input type="checkbox" checked class="custom-control-input" id="check-s">
+								<label class="custom-control-label" for="check-s">Display on exit-intent</label> -->
+								<input type="checkbox" class="custom-control-input" id="customSwitch2" [checked]="true" formControlName="exitIntentActive"  name="exitIntentActive">
+                    			<label class="custom-control-label triggerSwitch" for="customSwitch2">Display on exit-intent</label>
+								
+							</div>
+						  </div> 
+						</div>
+						<div class="row pt-3 pl-md-1">
+						  <div class="col-md-3 pr-md-0">
+							<div class="form-group mb-0 mb-0 pt-md-1 pt-sm-0 mb-2 pl-md-5 ml-md-2">
+								<label class="form-control-label myOwnLabel">Display at most</label>
+							</div>
+						  </div>
+						  <div class="col-md-4 pl-md-0 pd-sm-1 pl-md-1">
+							<div class="form-group">
+								<select class="form-control custom-select-sm" formControlName="displayLimit" name="displayLimit">
+								    <option value="no limit" [selected]="true">no limit</option>
+									<option value="every day">every day</option> 
+									
+								</select>
+							</div>
+						  </div> 
+						</div>
+					  </div>              
+
+					</form>
+					<div class="row">
+						<div class="col-md-7">
+							<div class="mt-1 text-right">
+								<!-- <button type="button" class="btn btn-sm btn-secondary">Save Changes</button> -->
+								<!-- <button type="button" class="btn btn-sm btn-success" (click)="triggerupdate()">Save Changes</button> -->
+								<button type="button" class="btn btn-sm btn-secondary" (click)="triggerupdate('trigersave')" >
+									<span [ngClass]="{'visibles': triggerButtonSave== 1, 'hiddens':triggerButtonSave== 2 }">Save Changes</span>
+									<span [ngClass]="{'visibles': triggerButtonSave== 2, 'hiddens':triggerButtonSave== 1}" class="spinner-border spinner-border-sm"></span>
+								</button>
+								<button type="button" class="btn btn-success btn-sm"  (click)="nextthree('trigersavenext')">
+								<span [ngClass]="{'visibles': triggerButtonSavenext== 1, 'hiddens':triggerButtonSavenext== 3}">Next step</span>
+							   <span [ngClass]="{'visibles': triggerButtonSavenext== 3, 'hiddens' :triggerButtonSavenext== 1 }" class="spinner-border spinner-border-sm"></span>
+								</button>
+								
+							</div>
+						</div>
+					</div>
+					</div>
+			  
+					<div [ngClass]="{'active show' : tab==='tab4'}" class="tab-pane fade col-md-8" id="intigration" role="tabpanel" aria-labelledby="intigration-tab">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">1. Add this code to your side header</h5>
+								</div>
+								<div class="card-body">
+									<div class="form-group">
+										<span class="text-muted text-sm">Add the code to all pages of your website in the <b>&lt;head&gt;</b> section <a href="#">learn more</a></span>
+										<input class="form-control" type="text" value="{{intigrationLink}}" #userinput readonly>
+										<br/>
+										<button type="button" (click)="copyInputMessage(userinput)" class="btn btn-sm btn-primary">
+											<span [ngClass]="{'visibles': copyCodeButton==1, 'hiddens':copyCodeButton== 2  }">Copy Code</span>
+											<span [ngClass]="{'visibles': copyCodeButton==2, 'hiddens':copyCodeButton== 1 }" class="spinner-border spinner-border-sm"></span>
+										</button>
+									</div>
+								</div>
+							</div>						
+						</div> 					
+					</div>
+			  
+					<div [ngClass]="{'active show' : tab==='tab5'}" class="tab-pane fade col-md-8" id="result" role="tabpanel" aria-labelledby="result-tab">
+						<!-- <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas> -->
+						<!-- <table #dataTable class="table table-striped" style="width:100%">
+								<thead>
+									<tr>
+										<th>Email</th>
+										<th>Date</th>
+										<th>Email</th>
+										<th>Impressions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>funnel@gmail.com</td>
+										<td>2019-11-10</td>
+										<td>funnel@gmail.com</td>
+										<td>impressions@gmail.com</td>
+									</tr>
+									<tr>
+										<td>funnel@gmail.com</td>
+										<td>2019-11-10</td>
+										<td>funnel@gmail.com</td>
+										<td>impressions@gmail.com</td>
+									</tr>
+							</table> -->
+
+							<div class="row">
+								<div class="col-sm"><button class="btn btn-outline-primary btn-sm" (click)="exporter.exportTable('csv')">CSV</button></div>
+								<!-- <div class="col-sm"><button class="btn-primary btn-sm" mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'test', sheet: 'sheet_name', Props: {Author: 'Talha'}})">Excel</button></div>
+								<div class="col-sm"><button class="btn-primary btn-sm" mat-raised-button (click)="exporter.exportTable('json')">Json</button></div>
+								<div class="col-sm"><button class="btn-primary btn-sm" mat-raised-button (click)="exporter.exportTable('txt')">Txt</button></div> -->
+								<div class="col-sm"></div>
+								<div class="col-sm"></div>
+								<div class="col-sm"></div>
+								<div class="col-sm"></div>
+								<div class="col-sm"></div>
+							</div>                                
+							
+						<mat-table matTableExporter [dataSource]="allresult" #exporter="matTableExporter">
+							
+						  
+							  <ng-container matColumnDef="email">
+								<mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+								<mat-cell *matCellDef="let element"> {{element.contact.email}} </mat-cell>
+							  </ng-container>
+						  
+							  <ng-container matColumnDef="date">
+								<mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+								<mat-cell *matCellDef="let element"> {{element.created_at}} </mat-cell>
+							  </ng-container>
+						                                             
+							  <ng-container matColumnDef="result">
+		            			<mat-header-cell *matHeaderCellDef> result </mat-header-cell>
+								<mat-cell *matCellDef="let element"> {{element.contact.result.winText}} </mat-cell>
+							  </ng-container>
+							  
+					
+							  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+							  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+						</mat-table>
+						<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>		
+						
+					</div>
+				</div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </div>
+ 
+  <!-- Configure Slice Modal start -->
+ 
+  <div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="overflow-x:auto !important">
+				<form [formGroup]= "slicesForm">
+                    <div class="modal-content configure-slice-modal">
+                      <div class="modal-header pt-3 pb-1">
+                        <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
+                          <div>
+                            <!-- <div class="icon icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                              <i class="fas fa-user"></i>
+                            </div> -->
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Configure Slices</h6>
+                          </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body pb-0 pt-0">
+					  <!-- <pre>{{slicesForm.value | json}}</pre> -->
+                        <div class="row">                          
+                          <div class="table-responsive">
+							 <table class="table align-items-center" formArrayName="slices" ><thead>
+								<tr>
+									<th scope="col" class="sort pl-0 pr-0" data-sort="product">
+									
+									</th>
+									<th scope="col" class="sort pl-0 pr-0" data-sort="price" style="width:18%"><span class="badge badge-dot mr-4">
+										<i class="bg-"></i>
+										<span class="status">Prize Type</span>
+										</span>
+									</th>
+									<th scope="col" class="sort pl-0 pr-0" data-sort="product"><span class="badge badge-dot mr-1">
+										<i class="bg-"></i>
+										<span class="status">label</span>
+										</span>
+										<span tooltip="The label which will be displayed inside the actual slice." placement="bottom" z-index="999999" show-delay="100">
+											<i class="fa fa-question-circle"></i>
+										</span>
+									</th>
+									
+									<th scope="col" class="sort pl-0 pr-0" data-sort="price" style="width:17%"><span class="badge badge-dot mr-4">
+										<i class="bg-"></i>
+										<span class="status">Coupon</span>
+										</span>
+									</th>
+									<th scope="col" class="sort pl-0 pr-0" data-sort="size" style="width:15%"><span class="badge badge-dot mr-1">
+										  <i class="bg-"></i>
+										  <span class="status">Percentage</span>
+										</span>
+										<span tooltip="The weight of each slice. Probability of win = Weight of the slice / sum of weight of each slice." z-index="999999" placement="bottom" show-delay="100">
+												<i class="fa fa-question-circle"></i>
+										</span>
+									</th>
+									<th scope="col" style="width:17%"><span class="badge badge-dot pl-0 pr-0 mr-1">
+										  <i class="bg-"></i>
+										  <span class="status">Win Text</span>
+										</span>
+										<span  tooltip="Use the variable {winText} in a popup field, it will autmatically be substituted by the correct value inputed here" placement="bottom" z-index="999999" show-delay="100">
+											<i class="fa fa-question-circle"></i>
+										</span>
+									</th>
+									
+								</tr>
+							</thead>
+								<tbody class="list">
+									<tr  *ngFor="let slice of sliceshere;let coo = index" formGroupName="{{coo}}">
+										<td>{{coo+1}}</td>
+										<td>
+										<input type="hidden" class="form-control" value="{{coo+1}}" formControlName="id" name="id">
+										<select name="prizeType" class="form-control" [value]='slice.prizeType' formControlName="prizeType">
+											<option value="lose" [selected]="slice.prizeType === 'lose' ? true : ''">Lose</option>
+											<option value="discount" [selected]="slice.prizeType === 'discount' ? true : ''">Discount</option>
+											<option value="product" [selected]="slice.prizeType === 'product' ? true : ''">Product</option>
+										</select>
+										</td>	
+										<td class="price">
+											<input type="text" class="form-control" value="{{slice.label}}" formControlName="label" name="label">
+										</td>
+										<td>
+											<input type="text" class="form-control" value="{{slice.coupon}}" formControlName="coupon" name="coupon">
+										</td>
+										<td>
+											<span class="valuePadding input-holder">
+											<input type="number" class="form-control" value="{{slice.winRatio}}" formControlName="winRatio" name="winRatio" [(ngModel)]="sliceshere[coo].winRatio" (ngModelChange)="percentageChanged()">
+											</span>
+										</td>
+										<td>
+											<input type="text" name="winText" class="form-control" value="{{slice.winText}}" formControlName="winText" name="winText" >
+										</td>						
+									</tr>
+									<tr>
+										<td></td>
+										<td>
+											
+										</td>
+											<td class="price">
+												
+											</td>
+											<td class="price">
+												
+											</td>
+											<td>
+												<span class="{{totalPercentage != 100 ? 'text-danger' : 'text-success'}}"><strong>&nbsp;&nbsp;{{totalPercentage}}%</strong></span>
+											</td>
+											<td>
+											
+											</td>
+																				
+										</tr>
+								</tbody>
+							</table>							
+						</div>
+                        </div>
+                      </div>
+					   <div class="modal-footer pb-2 pt-2">
+						   <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+						   <button  [disabled]="totalPercentage != 100 ? true : false" type="button" class="btn btn-success btn-sm" (click)="SlicesUpdate(slicesForm.value)">
+							<span [ngClass]="{'visibles': sliceButtonSave== 1, 'hiddens':sliceButtonSave== 2}">Save</span>
+							<span [ngClass]="{'visibles': sliceButtonSave== 2, 'hiddens':sliceButtonSave== 1}" class="spinner-border spinner-border-sm"></span> 
+						   </button>
+						</div> 
+                    </div>
+                  </form>				  
+                </div>
+			</div>
+
+			 <!-- Configure Slice Modal end -->
+
+			 <!-- Configure background Modal start -->
+
+			 <div class="modal fade" id="modal-configure-background" tabindex="-1" role="dialog" aria-labelledby="modal-configure-background" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header pt-3 pb-1">
+                        <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
+                          <div>
+                            <h6 class="mb-0">Configure Background</h6>
+                          </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body pl-0 pr-0 pt-0 pb-0">
+                        <div class="row">  
+							<div class="col-sm-12">
+								<div class="card border-top-0 mb-0 border-bottom-0">
+									<div class="card-header">
+										Choose Template
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-3">
+												<label class="black">
+													<input type="radio" name="background_template" value="one_value" checked="checked"/>
+													<div>Black</div>
+												</label>
+											</div>
+											<div class="col-sm-3">
+												<label class="christmas">
+													<input type="radio" name="background_template" value="one_value"/>
+													<div>Christmas</div>
+												</label>
+											</div>
+											<div class="col-sm-3">
+												<label class="halloween">
+													<input type="radio" name="background_template" value="one_value"/>
+													<div>Halloween</div>
+												</label>
+											</div>
+											<div class="col-sm-3">
+												<label class="blackfriday">
+													<input type="radio" name="background_template" value="one_value"/>
+													<div>Black Friday</div>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>    
+								<div class="card mb-0 border-bottom-0">
+									<div class="card-header">
+										OR Upload Image
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-12 bgUpload">
+												<label for="file-input">
+													<img src="../../../../assets/img/upload-background.png"/>
+												  </label>
+												  <input id="file-input" type="file" />
+											</div>
+										</div>
+									</div>
+								</div>                    
+							</div>                       
+                        </div>
+                      </div>
+					   <div class="modal-footer pb-2 pt-2">
+						   
+						   <button type="button" class="btn btn-success btn-sm">
+							<!-- <span [ngClass]="{'visibles': sliceButtonSave== 1, 'hiddens':sliceButtonSave== 2}">Save</span> -->
+							<span >Save</span>
+							<!-- <span [ngClass]="{'visibles': sliceButtonSave== 2, 'hiddens':sliceButtonSave== 1}" class="spinner-border spinner-border-sm"></span>  -->
+						   </button>
+						   <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+						</div> 
+                    </div>			  
+                </div>
+			</div>
+
+			 <!-- Configure background Modal end -->
+
+  <app-footer></app-footer>
+  
+	

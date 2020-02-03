@@ -1,0 +1,14 @@
+.extra-font-weight{
+    font-weight:800 !important;
+}
+.custom-list-style li{
+    font-size:0.9rem;
+    padding: .3rem 0;
+    border-bottom:1px solid #ececec;
+}
+.custom-list-style:first-child{
+    border-top:1px solid #ececec;
+}
+.custom-list-style:last-child{
+    border-bottom: none !important;
+}

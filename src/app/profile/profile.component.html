@@ -1,0 +1,307 @@
+ <div class="main-content">
+    <!-- Header (account) -->
+   <app-profile-topbar></app-profile-topbar>
+   	<section class="header-account-page bg-primary d-flex align-items-end" data-offset-top="#header-main">
+	</section>
+    <section class="slice">
+      <div class="container">
+        <div class="row row-grid">
+          <div class="col-lg-9 order-lg-2">
+            <!-- Change avatar -->
+           <!--  <div class="card bg-gradient-warning hover-shadow-lg">
+              <div class="card-body py-3">
+                <div class="row row-grid align-items-center">
+                  <div class="col-lg-8">
+                    <div class="media align-items-center">
+                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg">
+                      </a>
+                      <div class="media-body">
+                        <h5 class="text-white mb-0">Heather Wright</h5>
+                        <div>
+                          <form>
+                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
+                            <label for="file-1">
+                              <span class="text-white">Change avatar</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
+                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+                      <span class="btn-inner--text">Upgrade to Pro</span>
+                    </a>
+                  </div> 
+                </div>
+              </div>
+            </div> -->
+            <!-- General information form -->
+            <div class="actions-toolbar py-2 mb-2">
+              <h5 class="mb-0">Manage your personal information</h5>
+              <!-- <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p> -->
+            </div>
+            <form [formGroup]="updateprofile">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">First name </label>
+                    <input class="form-control" type="text" placeholder="Enter your first name" formControlName="firstName"  name="firstName">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Last name</label>
+                    <input class="form-control" type="text" placeholder="Also your last name" formControlName="lastName"  name="lastName">
+                  </div>
+                </div>
+              </div>
+             <!--  <div class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Birthday</label>
+                    <input type="text" class="form-control" data-toggle="date" placeholder="Select your birth date">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Gender</label>
+                    <select class="form-control" data-toggle="select">
+                      <option value="1">Female</option>
+                      <option value="2">Male</option>
+                      <option value="2">Rather not say</option>
+                    </select>
+                  </div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Email</label>
+                    <input class="form-control" type="email"   formControlName="email"  name="email" readonly>
+                    <!-- <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage you notifications</a> in order to receive only the thing that matter to you most.</small> -->
+                  </div>
+                </div>
+				 <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Phone</label>
+                    <input class="form-control" type="text" placeholder="+40-777 245 549" formControlName="phone"  name="phone">
+                  </div>
+                </div>
+              </div>
+              <!-- Address -->
+              <div class="pt-0 mt-2 delimiter-top">
+                <div class="actions-toolbar py-2 mb-2">
+                  <h5 class="mb-1">Address details</h5>
+                  <p class="text-sm text-muted mb-0">Fill in your address info for upcoming orders or payments.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="form-control-label">Address</label>
+                      <input class="form-control" type="text" placeholder="Enter your home address" formControlName="adress"  name="adress">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">City</label>
+                        <input class="form-control" type="text" placeholder="City" formControlName="city"  name="city">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label">Postal Code</label>
+                        <input class="form-control" type="text" placeholder="Postal Code" formControlName="postalCode" name="postalCode">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Country</label>
+                      <select class="form-control" data-toggle="select" title="Country" data-live-search="true" data-live-search-placeholder="Country" formControlName="country">
+                        <option>Romania</option>
+                        <option>United Stated</option>
+                        <option>France</option>
+                        <option>Greece</option>
+                        <option>Italy</option>
+                        <option>Norway</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Skills 
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Skills</h5>
+                  <p class="text-sm text-muted mb-0">Show off you skills using our tags input control.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="sr-only">Skills</label>
+                      <input type="text" class="form-control" value="HTML, CSS3, Bootstrap, Photoshop, VueJS" data-toggle="tags" placeholder="Type here..." />
+                    </div>
+                  </div>
+                </div>
+              </div>-->
+              <!-- Description 
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">About me</h5>
+                  <p class="text-sm text-muted mb-0">Use this field to let others know you better.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label class="form-control-label">Bio</label>
+                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3"></textarea>
+                        <small class="form-text text-muted mt-2">You can @mention other users and organizations to link to them.</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>-->
+              <!-- Save changes buttons -->
+              <div class="pt-2 mt-2 delimiter-top">
+                <button type="button" class="btn btn-sm btn-primary" (click)="profileupdate()">Save changes</button>
+                <button type="button" class="btn btn-link text-muted">Cancel</button>
+              </div>
+            </form>
+			 <!-- <form>
+              <!-- Password 
+              <div class="actions-toolbar py-2 mt-4">
+                <h5 class="mb-1">Change password</h5>
+                <!-- <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Old password</label>
+                    <input class="form-control" type="password">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">New password</label>
+                    <input class="form-control" type="password">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Confirm password</label>
+                    <input class="form-control" type="password">
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <button type="button" class="btn btn-sm btn-primary">Update password</button>
+                <a routerLink="/resetpassword" class="btn btn-sm btn-secondary">I forgot my password</a>
+              </div>
+            </form> -->
+			<!-- <div class="mt-5 pt-5 delimiter-top">
+              <div class="actions-toolbar py-2 mb-4">
+                <h5 class="mb-1">Change username</h5>
+                <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
+              </div>
+              <!-- Button trigger modal
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-change-username">Change username</button>
+              <!-- Modal 
+              <div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form>
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
+                          <div>
+                            <div class="icon icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                              <i class="fas fa-user"></i>
+                            </div>
+                          </div>
+                          <div>
+                            <h6 class="mb-0">Change username</h6>
+                          </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="form-control-label">Old username</label>
+                              <input class="form-control" type="text">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="form-control-label">New username</label>
+                              <input class="form-control" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="px-5 pt-4 mt-4 delimiter-top text-center">
+                          <p class="text-muted text-sm">You will receive an email where you will be asked to confirm this action in order to be completed.</p>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Change my username</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Delete -->
+           <!-- <div class="mt-5 pt-5 delimiter-top">
+              <div class="actions-toolbar py-2 mb-4">
+                <h5 class="mb-1">Delete account</h5>
+                <p class="text-sm text-muted mb-0">Deleting your account is ireversible and can affect past activites.</p>
+              </div>
+              <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-account">Delete account</button>
+              <div class="modal modal-danger fade" id="modal-delete-account" tabindex="-1" role="dialog" aria-labelledby="modal-delete-account" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <form class="form-danger">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="text-center">
+                          <i class="fas fa-exclamation-circle fa-3x opacity-8"></i>
+                          <h5 class="text-white mt-4">Should we stop now?</h5>
+                          <p class="text-sm text-sm">All your data will be erased. You will no longer be billed, and your username will be available to anyone.</p>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label text-white">You email or username</label>
+                          <input class="form-control" type="text">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label text-white">To verify, type <span class="font-italic">delete my account</span> below</label>
+                          <input class="form-control" type="text">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label text-white">Your password</label>
+                          <input class="form-control" type="password">
+                        </div>
+                        <div class="mt-4">
+                          <button type="button" class="btn btn-block btn-sm btn-white text-danger">Delete my account</button>
+                          <button type="button" class="btn btn-block btn-sm btn-link text-light mt-4" data-dismiss="modal">Not this time</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>-->
+          </div>
+          <div class="col-lg-3 order-lg-1">
+           <app-profile-sidebar></app-profile-sidebar>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <app-footer></app-footer>

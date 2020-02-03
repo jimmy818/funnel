@@ -1,0 +1,350 @@
+.btn-neutral:not(:disabled):not(.disabled).active{
+    border:none;
+    border-bottom:3px solid #6e00ff !important;
+}
+.custom-label-checkbox{
+    padding-top:10px;
+}
+.myOwnLabel{
+    font-family: Nunito,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #8492a6;
+    text-align: left;
+}
+.triggerSwitch::before{
+    top:5px;
+}
+.triggerSwitch::after{
+    top:8px;
+}
+.dt-buttons{
+    float:left;
+}
+.button_slices{
+    width: 184px;
+}
+.image-upload > input {
+    visibility:hidden;
+    width:0;
+    height:0
+  }
+.customButton{
+    background-color: #D82121;
+    border-color: #D82121;
+    color:#FFF;
+}
+.headColor{
+  color:#dadada;
+}
+.subHeadingColor{
+    color:#b8c3d2
+}
+.columnBackground{
+    background-image:url('/assets/img/background-percentage.png');
+}
+.customBox{
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #eff2f7;
+    border-radius: .375rem;
+    position: relative;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+}
+.configure-slice-modal .form-control {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0rem 0.25rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #8492a6;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e0e6ed;
+    border-radius: .25rem;
+    box-shadow: inset 0 1px 1px rgba(31,45,61,.075);
+    transition: all .2s ease;
+}
+
+.input-holder {
+    /* border: 1px solid #cccccc; */
+    display: inline-flex;
+    /* padding: 5px; */
+    }
+    .input-holder > input {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline:none;
+    }
+    .input-holder:after {
+    content: '%';
+    position: relative;
+    right: 20%;
+    top: 5px;
+   }
+.desktop_preview img{
+    height: 30px;
+}
+.preview_outer{
+    display: flex;
+    margin: auto;
+}
+.preview_outer h5{
+    margin: auto;
+}
+.valuePadding input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.valuePadding input[type=number] {
+  -moz-appearance:textfield;
+}
+/* black template css start */
+.black {
+    display : block;
+    /* width: 400px; */
+}
+.black > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+.black > input + div{ /* DIV STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #333;
+}
+.black > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
+    background-color: #000;
+    border: 1px solid #000;
+    color: #FFF;
+    text-align: center;
+    padding: 10px 0px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+/* black template css end */
+
+/* christmas template css start */
+.christmas {
+    display : block;
+    /* width: 400px; */
+}
+.christmas > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+.christmas > input + div{ /* DIV STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    border: 1px solid red;
+    border-radius: 5px;
+    color: #333;
+}
+.christmas > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
+    background-color: red;
+    border: 1px solid red;
+    text-align: center;
+    color: #FFF;
+    padding: 10px 0px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+/* christmas template css end */
+
+/* halloween template css start */
+.halloween {
+    display : block;
+    /* width: 400px; */
+}
+.halloween > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+.halloween > input + div{ /* DIV STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    border: 1px solid orange;
+    border-radius: 5px;
+    color: #333;
+}
+.halloween > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
+    background-color: orange;
+    border: 1px solid orange;
+    text-align: center;
+    color: #FFF;
+    padding: 10px 0px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+/* halloween template css end */
+
+/* black friday template css start */
+.blackfriday {
+    display: block !important;
+    width: 100% !important;
+}
+.blackfriday > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+.blackfriday > input + div{ /* DIV STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    color: #333;
+}
+.blackfriday > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
+    background-color: #525252;;
+    border: 1px solid #525252;;
+    text-align: center;
+    color: #FFF;
+    padding: 10px 0px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+/* black friday template css end */
+.bgUpload{
+    text-align: center;
+}
+.bgUpload label{
+    cursor: pointer;
+}
+.bgUpload img{
+    width: 100%;
+}
+.bgUpload>input {
+    display: none;
+  }
+
+@media only screen and (max-width: 767px) {
+    .custom-label-checkbox{
+        padding-top:0px;
+    }
+}
+
+a.paginate_button{
+    color:red !important;
+}
+a.paginate_button.current{
+    color:red !important;
+}
+.table td{
+    padding: 0.2rem !important;
+}
+.visibles{
+    display: block;
+}
+.hiddens{
+    display: none;
+}
+.color_picker{
+    width: 40px;
+    float:right;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #8492a6;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #505050;
+    border-radius: .25rem;
+    box-shadow: inset 0 1px 1px rgba(31,45,61,.075);
+    transition: all .2s ease;
+}
+
+/* Custom Switches */
+.custom_label_position:after {
+    left: 15.4375rem;
+}
+.custom_label_position:before {
+    left: 15.25rem;
+}
+.custom_label{
+    padding-left: 0px !important;
+}
+.form_fields_card{
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.form_fields_card::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+
+.form_fields_card::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.form_fields_card::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+}
+.desktop-view{
+    /* display: none; */
+}
+.mobile-view{
+    /* display: block; */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 350px)
+{   
+    .custom_label_position:before {
+        left: 11.25rem;
+    }
+    .custom_label_position:after {
+        left: 11.4375rem;
+    }
+}
+@media only screen and (min-device-width: 351px) and (max-device-width: 375px)
+{   
+    .custom_label_position:before {
+        left: 14.25rem;
+    }
+    .custom_label_position:after {
+        left: 14.4375rem;
+    }
+}
+@media only screen and (min-device-width: 380px) and (max-device-width: 475px)
+{   
+    .custom_label_position:before {
+        left: 17.25rem;
+    }
+    .custom_label_position:after {
+        left: 17.4375rem;
+    }
+}

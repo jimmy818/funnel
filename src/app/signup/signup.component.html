@@ -1,0 +1,131 @@
+<header class="header header-transparent bg-primary" id="header-main">
+  <!-- Topbar -->
+  <!-- Main navbar -->
+  <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-primary mt-4">
+  <div class="container">
+        <a class="navbar-brand mr-lg-5" routerLink="/profile">
+        <img alt="Image placeholder" src="../../assets/img/brand/funnel-spin.png" id="navbar-logo" style="height: 50px;">
+      </a>
+      <div class="collapse navbar-collapse mr-md-9 mr-sm-0" id="navbar-primary">
+          <!-- <ul class="navbar-nav ml-lg-auto">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/manage-wheels"> My wheels </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/profile">Setting </a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbar-primary_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, Name</a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm" aria-labelledby="navbar-primary_dropdown_1">
+                      <a class="dropdown-item" routerLink="/profile">Profile</a>
+                      <a class="dropdown-item" routerLink="/subscription">Subscription</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" routerLink="/login">Logout</a>
+                  </div>
+              </li>
+          </ul> -->
+
+      </div>
+  </div>
+</nav>
+</header>
+<div class="main-content">
+    <div class="container min-vh-100 d-flex align-items-center">
+      <div class="col py-10">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div>
+              <div class="mb-5 text-center">
+                <h6 class="h3">Create account</h6>
+                <p class="text-muted mb-0">Turboboost your email collection.</p>
+              </div>
+              <span class="clearfix"></span>
+			  
+			   <div class="row">
+								  <div class="col-md-12">
+									<a class="btn btn-outline-dark btnhref"  role="button" style="text-transform:none;cursor:pointer" (click)="tryGoogleLogin()">
+									  <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+									<span class="btnLabel">  Sign up with Google </span>
+									</a>
+								</div>
+							</div>
+			  <div class="separator mt-2">OR</div> 
+              <form role="form" [formGroup]="SignupForm">
+              <div class="alert alert-danger" *ngIf="error">  {{errorMessage}} </div> 
+              <!-- <div class="alert alert-danger" *ngIf="!error==('')">  {{error}} </div>  -->
+				<div class="form-group">
+                  <label class="form-control-label">Email address</label>
+                  <div class="input-group input-group-merge">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="email" class="form-control" id="input-email" placeholder="name@example.com" formControlName="email"  name="email">
+                  </div>
+                </div>
+				<div class="form-group mb-4">
+                  <label class="form-control-label">Password</label>
+					<div class="input-group input-group-merge">
+						<div class="input-group-prepend">
+						  <span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" id="input-password" placeholder="********" formControlName="password"  name="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+
+					   <!--  <div class="input-group-append">
+							<span class="input-group-text">
+								<i class="fas fa-eye"></i>
+							</span>
+						</div> -->
+						<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+							<div *ngIf="f.password.errors.required">Password is required</div>
+							<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+						</div>
+					</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Confirm password</label>
+					<div class="input-group input-group-merge">
+						<div class="input-group-prepend">
+						  <span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" id="input-password-confirm" placeholder="********" formControlName="cpassword"     name="cpassword" [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }">
+						<div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
+							<div *ngIf="f.cpassword.errors.required">Confirm Password is required</div>
+							<div *ngIf="f.cpassword.errors.mustMatch">Passwords must match</div>
+						</div>
+					</div>
+                </div>
+
+                <!-- <div class="my-4">
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="check-terms">
+                    <label class="custom-control-label" for="check-terms">I agree to the <a href="#">terms and conditions</a></label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="check-privacy">
+                    <label class="custom-control-label" for="check-privacy">I agree to the <a href="#">privacy policy</a></label>
+                  </div>
+                </div> -->
+
+
+                <div class="mt-4">
+					<button type="submit"  class="btn btn-block btn-primary" (click)="onSubmit()">
+            <span [ngClass]="{'visibles': signupButtonLoader== 1, 'hiddens':signupButtonLoader== 2 }">Create my account</span>
+						<span class="" [ngClass]="{'visibles text-center marginAuto': signupButtonLoader== 2, 'hiddens':signupButtonLoader== 1 }" class="spinner-border spinner-border-sm text-center marginAuto"></span>
+          </button>
+					<!-- <button type="button" class="btn btn-block btn-google-plus btn-icon-label">
+						<span class="btn-inner--icon">
+							<i class="fab fa-google-plus-g"></i>
+						</span>
+						<span class="btn-inner--text">Google +</span>
+					</button> -->
+				</div>
+              </form>
+              <div class="mt-4 text-center"><small>Already have an acocunt?</small>
+                <a routerLink="/login" class="small font-weight-bold"> Sign in</a></div>
+				
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

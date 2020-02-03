@@ -1,0 +1,115 @@
+ <div class="main-content">
+    <!-- Header (account) -->
+    <app-profile-topbar></app-profile-topbar>
+	<section class="header-account-page bg-primary d-flex align-items-end" data-offset-top="#header-main">
+	</section>
+    <section class="slice bg-section-secondary">
+      <div class="container">
+        <!-- Wheels -->
+        <div class="mb-4">
+          <div class="actions-toolbar py-2 mb-4">
+            <h5 class="mb-1">My wheels  &nbsp; <a class="btn btn-sm btn-success rounded-pill btn-icon shadow text-right" style="cursor: pointer;
+    color: white;">
+                  <span class="btn-inner--icon">
+                    <i [ngClass]="{'fas fa-plus':  step== 1, 'spinner-border spinner-border-sm':  step== 2 }"></i>
+                  </span>
+                  <span class="btn-inner--text" (click)="addwheels($event)" >Create new wheel </span>
+                </a></h5>
+            <!-- <p class="text-sm text-muted mb-0">Manage your connections and check out common projects.</p> -->
+          </div>
+         
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let wheels of wheeldata">
+              <div class="card hover-shadow-lg hover-translate-y-n10">
+                <div class="card-body text-center">
+                  <div class="avatar-parent-child">
+                     <a  class="avatar avatar-lg rounded-circle">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/wheels.png">
+                    </a>
+                    <span class="avatar-child avatar-badge bg-info"></span> 
+                  </div>
+                  <h5 style="cursor:pointer" routerLink="/edit-wheels/{{wheels.guid}}" class="mt-3 mb-0">{{wheels.wheelName}}</h5>
+                  <a class="d-block text-sm text-muted mb-3">Date : {{wheels.created_at}} </a>
+                  <div class="card-body border-top mt-2 pt-3">
+                      <div class="row justify-content-between">                    
+                        <div class="col-auto text-center">         
+                          <span class="d-block h5 mb-0">0</span>
+                          <span class="d-block text-sm text-muted">Impressions</span>
+                        </div>
+                        <div class="col-auto text-center">
+                          <span class="d-block h5 mb-0">0</span>
+                          <span class="d-block text-sm text-muted">Emails</span>
+                        </div> 
+                      </div>
+                    </div>           
+                  <div class="actions d-flex justify-content-between">
+                   <div class="">
+                    <!-- <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1"></label> -->
+                    <button type="button"  (click)="clickOnOff(wheels,wheels.guid)" [ngClass]="{'btn-outline-success':wheels.status, 'btn-outline-danger':!wheels.status}" class="btn btn-outline-danger btn-sm" >
+                        {{wheels.status ? 'Turn-On':'Turn-Off'}}
+                    </button>
+                  </div>
+                    <a routerLink="/edit-wheels/{{wheels.guid}}" class="action-itembtn btn btn-outline-dark btn-sm">
+                      Edit
+                    </a>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+
+           
+            <!-- <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="card hover-shadow-lg hover-translate-y-n10">
+                <div class="card-body text-center">
+                  <div class="avatar-parent-child">
+                    <a href="#" class="avatar avatar-lg rounded-circle">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg">
+                    </a>
+                    <span class="avatar-child avatar-badge bg-success"></span>
+                  </div>
+                  <h5 class="mt-3 mb-0">Monroe Parker</h5>
+                  <a href="#" class="d-block text-sm text-muted mb-3">@monroe.parker</a>
+                  <div class="actions d-flex justify-content-between px-4">
+                    <a href="#" class="action-item">
+                      <i class="fas fa-user-edit"></i>
+                    </a>
+                    <a href="#" class="action-item">
+                      <i class="fas fa-bell"></i>
+                    </a>
+                    <a href="#" class="action-item">
+                      <i class="fas fa-trash-alt"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body border-top">
+                  <div class="row justify-content-between">
+                    <div class="col-6">
+                      <div style="max-width: 150px;">
+                        <div id="apex-spark-2" data-toggle="apex-chart"></div>
+                      </div>
+                    </div>
+                    <div class="col-auto text-center">
+                      <span class="d-block h4 mb-0">50</span>
+                      <span class="d-block text-sm text-muted">Open tasks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   -->          
+          </div>
+          <ng-template #noWheel>
+              <h2 class="text-center mb-5 mt-5">Click on Create Wheel</h2>
+          </ng-template>
+          <!-- Load more -->
+         <!--  <div class="mt-4 text-center">
+            <a href="#" class="btn btn-sm btn-neutral rounded-pill shadow hover-translate-y-n3">Load more ...</a>
+          </div> -->
+        </div>
+      </div>
+    </section>
+  </div> 
+ 
+  <app-footer></app-footer>

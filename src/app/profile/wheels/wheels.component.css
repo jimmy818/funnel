@@ -1,0 +1,18 @@
+:host ::ng-deep .buttons-csv{
+    float: left;
+    color: #FFF;
+    border: none;
+    background-color: blue;
+    border-radius: 4px;
+    width: 70px;
+    padding: 5px;
+}
+:host ::ng-deep .dt-buttons{
+    float: left;
+    color: #FFF;
+    border: none;
+    background-color: blue;
+    border-radius: 4px;
+    width: 70px;
+    padding: 5px;
+}
