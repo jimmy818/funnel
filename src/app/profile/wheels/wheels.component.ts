@@ -22,6 +22,7 @@ crdate:any;
 /** Login user variables **/
 Uid = localStorage.getItem('loginuserUid');
 
+
 	constructor( 
 		private _wheelService: WheelsService,
 		private router: Router,
@@ -34,18 +35,11 @@ Uid = localStorage.getItem('loginuserUid');
 		public step = 1;
 	
 	ngOnInit() {
-		//console.log(this.Uid)
+		 console.log(localStorage.getItem('loginuserUid'))
 		// this.getAllwheels();
+		
 		this.getAllwheels(this.Uid)
 		
-		if (this._auth.isAuthenticated) {
-			return true;
-		}else{
-			this.router.navigate(['/login']);
-			return false;
-		} 
-		
-		console.log(this.crdate)
 	}
 	
 	getAllwheels(Uid){
@@ -100,7 +94,7 @@ Uid = localStorage.getItem('loginuserUid');
 		const param = {
 			userId : Number(this.Uid),
 			version: 1.0,
-			 created_at: this.crdate 		
+			created_at: this.crdate 		
 			}
 		
 		console.log(param)
@@ -125,11 +119,11 @@ Uid = localStorage.getItem('loginuserUid');
 	this.curDate=this.datePipe.transform(new Date(),"yyyy-dd-MM HH:mm");
 	this.crdate=this.datePipe.transform(new Date(),"yyyy-dd-MM HH:mm");     
    const wheeldata = {		
- 
-  "guid": Number(unique_wheel_id),
+   
+   "guid": Number(unique_wheel_id),
+  "created_at": this.crdate,
   "updated_at": this.curDate,
-  "created_at":this.crdate,
-  "userid":  Number(this.Uid),
+  "userId":  Number(this.Uid),
   "version": "1.0",
   "wheelName": this.curDate,
   "formType": "email",
@@ -155,9 +149,9 @@ Uid = localStorage.getItem('loginuserUid');
   "triggers":
   {
     "delayActive": "True",
-    "delayTime": "10 seconds",
-    "exitIntentActive": "True",
-    "displayLimit": "every day"
+	"exitIntentActive": "True",
+    "delayTime": 10,
+    "displayLimit": "no limit"
   },
   "slices":
       [
@@ -165,7 +159,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":1,
           "label": "Free sample",
           "coupon": "WELCOME",
-          "winRatio": "5",
+          "winRatio": 5,
           "winText": "Free Sample",
           "prizeType": "product"
         },
@@ -173,7 +167,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":2,
           "label": "So close!",
           "coupon": "",
-          "winRatio": "0",
+          "winRatio": 0,
           "winText": "Sorry",
           "prizeType": "lose"
         },
@@ -181,7 +175,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":3,
           "label": "10% Off",
           "coupon": "10OFF",
-          "winRatio": "20",
+          "winRatio": 20,
           "winText": "10% Off",
           "prizeType": "discount"
         },
@@ -189,7 +183,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":4,
           "label": "No luck today.",
           "coupon": "",
-          "winRatio": "0",
+          "winRatio": 0,
           "winText": "Sorry",
           "prizeType": "lose"
         },
@@ -197,7 +191,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":5,
           "label": "20% Off",
           "coupon": "20OFF",
-          "winRatio": "20",
+          "winRatio": 20,
           "winText": "20% Off",
           "prizeType": "discount"
         },
@@ -205,7 +199,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":6,
           "label": "Sorry, try again!",
           "coupon": "",
-          "winRatio": "0",
+          "winRatio": 0,
           "winText": "Sorry",
           "prizeType": "lose"
         },
@@ -213,7 +207,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":7,
           "label": "30% Off",
           "coupon": "30OFF",
-          "winRatio": "20",
+          "winRatio": 20,
           "winText": "30% Off",
           "prizeType": "discount"
         },
@@ -221,7 +215,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":8,
           "label": "Next time!",
           "coupon": "",
-          "winRatio": "0",
+          "winRatio": 0,
           "winText": "Sorry",
           "prizeType": "lose"
         },
@@ -229,7 +223,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":9,
           "label": "40% Off",
           "coupon": "40OFF",
-          "winRatio": "20",
+          "winRatio": 20,
           "winText": "40% Off",
           "prizeType": "discount"
         },
@@ -237,7 +231,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":10,
           "label": "Almost!",
           "coupon": "",
-          "winRatio": "0",
+          "winRatio": 0,
           "winText": "Sorry",
           "prizeType": "lose"
         },
@@ -245,7 +239,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":11,
           "label": "50% Off",
           "coupon": "50OFF",
-          "winRatio": "15",
+          "winRatio": 15,
           "winText": "50% Off",
           "prizeType": "discount"
         },
@@ -253,7 +247,7 @@ Uid = localStorage.getItem('loginuserUid');
           "id":12,
           "label": "Not quite.",
           "coupon": "",
-          "winRatio": "0",
+          "winRatio": 0,
           "winText": "Sorry",
           "prizeType": "lose"
         }
@@ -262,6 +256,7 @@ Uid = localStorage.getItem('loginuserUid');
 
 		 
 }		 
+    
 
 
 this._wheelService.updatewheel(wheeldata)
@@ -274,7 +269,7 @@ this._wheelService.updatewheel(wheeldata)
 			console.log(error);
 		});
 
- console.log(wheeldata)
+ 
 		 
 	}		 
 		 		 
