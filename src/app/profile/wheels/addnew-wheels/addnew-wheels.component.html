@@ -12,7 +12,7 @@ a.paginate_button.current{
     color:red !important;
 }
 </style>
-<app-profile-topbar> </app-profile-topbar>
+<app-profile-topbar></app-profile-topbar>
  <div class="main-content">
 
   
@@ -75,7 +75,7 @@ a.paginate_button.current{
 				<div class="tab-content" id="myTabContent">
 					<div [ngClass]="{'active show' : tab==='tab1'}" class="tab-pane fade show active col-md-8" id="general" role="tabpanel" aria-labelledby="general-tab">
 				   <form [formGroup]="addFor">
-					  <!-- Title -->             
+					  <!-- Title -->            
 					  <div class="mt-1">
 						<!-- Title -->
 						<div class="actions-toolbar mb-0">
@@ -87,7 +87,6 @@ a.paginate_button.current{
 						  <div class="col-md-12">
 							<div class="form-group">
 							  <input class="form-control" type="text" placeholder="Enter the name of your wheel" formControlName="wheelName">
-							  
 							</div>
 						  </div>
 						  <div class="col-md-12">
@@ -119,7 +118,6 @@ a.paginate_button.current{
 							<span [ngClass]="{'visibles': generalTabSave== 2, 'hiddens':generalTabSave== 1 }" class="spinner-border spinner-border-sm"></span>
 						</button>
 						<button type="button" class="btn btn-sm btn-success" id="nextstep" (click)="next('generaltabnext')">
-						
 							<span [ngClass]="{'visibles': generalTabSavenext== 1, 'hiddens':generalTabSavenext== 3 }">Next step</span>
 							<span [ngClass]="{'visibles': generalTabSavenext== 3, 'hiddens':generalTabSavenext== 1 }" class="spinner-border spinner-border-sm"></span>
 						</button>
@@ -130,52 +128,42 @@ a.paginate_button.current{
 					<div [ngClass]="{'active show' : tab==='tab2'}" class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="design-tab">
 					<div class="row">
 					<div class="col-md-12">
-							<div class="card">
-								<div class="card-header pt-2 pb-2">
-									<h5 class="card-title mb-0 mt-2 mb-2">Slices</h5>
+						<div class="">
+							  <div class="actions-toolbar py-0 mb-0">
+								  <h6 class="mb-1 font-weight-bold">Slices</h6>
+							   </div>
+						</div>
+						  <div class="row">
+							  <div class="col-sm-2 mb-1">
+								<button class="btn btn-sm btn-outline-dark button_slices" type="button" data-toggle="modal" data-target="#modal-change-username">Configure slices</button>
+							  </div>
+							  <div class="col-sm-2">
+								<button class="btn btn-sm btn-outline-dark button_slices" type="button" data-toggle="modal" data-target="#modal-slices-background-color">Slices Colors</button>								  
+							  </div>
+						</div>
+						<div class="">
+							<div class="form-group">
+							  <div class="actions-toolbar py-0 mb-0">
+								  <h6 class="mb-1 font-weight-bold">Position</h6>
+							   </div>
+							   <div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" checked="true" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+								<label class="custom-control-label" for="customRadioInline1">Left</label>
 							</div>
-							<div class="card-body">
-							<div class="row">
-								<div class="col-md-12 mb-3">
-									<button class="btn btn-sm btn-outline-dark button_slices" type="button" data-toggle="modal" data-target="#modal-change-username">Configure slices</button>
-								</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+								<label class="custom-control-label" for="customRadioInline2">Right</label>
 							</div>
-							</div>
-							</div>
-							<div class="card">
-								<div class="card-header pt-2 pb-2">
-									<h5 class="card-title mb-0 mt-2 mb-2">Position</h5>
-									<span tooltip="TEST TOOLTIP" z-index="999999" placement="top" show-delay="100">
-										<i class="fa fa-question-circle"></i>
-									</span>
-							</div>
-							<div class="card-body">
-							<div class="row">
-								<div class="col-md-12 mb-3">
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" checked="true" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-										<label class="custom-control-label" for="customRadioInline1">Left</label>
-									</div>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-										<label class="custom-control-label" for="customRadioInline2">Right</label>
-									</div>
-								</div>
-							</div>	
-							</div>
-							</div>
-							<div class="card">
-								<div class="card-header pt-2 pb-2">
-									<h5 class="card-title mb-0 mt-2 mb-2">Background</h5>
-								</div>
-							<div class="card-body">
-							<div class="row">
-								<div class="col-md-12 mb-3">
-									<button class="btn btn-sm btn-outline-dark" type="button" data-toggle="modal" data-target="#modal-configure-background">Configure Background</button>
-								</div>
-							</div>
-							</div>
-							</div>
+						  </div>
+						</div>
+						<div class="">
+							<div class="form-group">
+							  <div class="actions-toolbar py-0 mb-0">
+								  <h6 class="mb-1 font-weight-bold">Background</h6>
+							   </div>
+							   <button class="btn btn-sm btn-outline-dark" type="button" data-toggle="modal" data-target="#modal-configure-background">Configure Background</button>
+						  </div>
+						</div> 
 					</div>
 					</div>
 					<div class="row">
@@ -186,10 +174,10 @@ a.paginate_button.current{
 									<h5 class="card-title mb-0">Start State</h5>
 								</div>
 								<div class="border border-dark preview_outer">
-									<button class="btn btn-default desktop_preview pl-3 pr-3">
+									<button (click)="phoneViewWinState=0" class="btn btn-default desktop_preview pl-3 pr-3">
 										<img src="../../../../assets/images/preview-desktop.png">
 									</button>
-									<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary">
+									<button (click)="phoneViewWinState=1" class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary">
 										<img src="../../../../assets/images/preview-mobile.png">
 									</button>
 									<h5 class="pr-3">Preview</h5>
@@ -199,7 +187,10 @@ a.paginate_button.current{
 					<div class="row">
 					<div class="col-md-8">
 						<!-- Preview Desktop section-->
-						<div class="columnBackground">
+						<div [ngClass]="phoneViewWinState ? 'phone' : ''">
+							<div id="startStateWheel" style="height: 570px;"></div>
+						</div>
+						<!-- <div class="columnBackground">
 						<div class="row">
 							<div class="col-md-6 pb-md-0 pb-sm-5">
 							<img src="./assets/widget-wheel.png">
@@ -220,7 +211,7 @@ a.paginate_button.current{
 						</form>
 						</div>
 						</div>
-						</div>
+						</div> -->
 						<!-- Preiew Desktop Section End -->
 
 					</div>
@@ -229,22 +220,19 @@ a.paginate_button.current{
 					  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 					  <div class="card border-0">
 							<div class="card mb-0 border-0">
-								<span tooltip="TOOL TIP " z-index="999999" placement="top" show-delay="400">
-									<i class="fa fa-question-circle"></i>
-								</span>
 								<div class="card-body">
-									<form  [formGroup]="widgetpreform" class="needs-validation" novalidate>
+									<form [formGroup]="widgetpreform" class="needs-validation" novalidate>
 										<div class="form-row">
 										<div class="col-md-12 mb-3">
 											<label for="validationCustom01">Title</label>
 											<input name="titleText" [(colorPicker)]="titleText" [style.background]="titleText" class="color_picker" [cpPosition]="'left'"/>
 											<input type="text" [(ngModel)]="headingvalues" class="form-control" id="validationCustom01" placeholder="" value="" required formControlName="titleText"  name="titleText">
 										</div>
-											<div class="col-md-12 mb-3">
+										<div class="col-md-12 mb-3">
 											<label for="validationCustom02">Subtitle</label>
 											<input name="subTitleColor" [(colorPicker)]="subTitleColor" [style.background]="subTitleColor" class="color_picker" [cpPosition]="'left'"/>
 											<input type="text" [(ngModel)]="labelvalues" class="form-control" id="validationCustom02" placeholder="" value="" required formControlName="subtitleText"  name="subtitleText">
-											</div>
+										</div>
 											<div class="col-md-12 mb-3">
 											<label for="validationCustom02">Placeholder Text</label>
 											<input type="text" [(ngModel)]="placeholderText" class="form-control" placeholder="" value="{{placeholderText}}" required formControlName="placeholderText" name="placeholderText">
@@ -311,7 +299,6 @@ a.paginate_button.current{
 								<span [ngClass]="{'visibles': designTabWidgetSave==1, 'hiddens':designTabWidgetSave==2 }">Save Changes</span>
 								<span [ngClass]="{'visibles': designTabWidgetSave==2, 'hiddens':designTabWidgetSave==1 }" class="spinner-border spinner-border-sm"></span>
 							</button>
-							
 						</div>
 					</div>
 					</div>
@@ -323,23 +310,61 @@ a.paginate_button.current{
 						</div>
 					<div class="col-md-12 mt-4">
 					<div class="customBox">
+					<!-- win discount -->
 					<div class="card-header d-flex justify-content-between align-items-center border-bottom">
 							<div>
 								<h5 class="card-title mb-0">Win State</h5>
 							</div>
-							<div class="border border-dark preview_outer">
-								<button class="btn btn-default desktop_preview pl-3 pr-3">
+							<!-- win discount -->
+							<div class="border border-dark preview_outer" [ngClass]="winStateTabs=='1' ? 'previewShow' : 'hiddens'">
+								<button class="btn btn-default desktop_preview pl-3 pr-3" (click)="phoneViewWinDiscount=0">
 									<img src="../../../../assets/images/preview-desktop.png">
 								</button>
-								<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary">
+								<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary" (click)="phoneViewWinDiscount=1">
 									<img src="../../../../assets/images/preview-mobile.png">
 								</button>
 								<h5 class="pr-3">Preview</h5>
 							</div>
+							<!-- win discount -->
+
+
+
+							<!-- win product -->
+							<div class="border border-dark preview_outer" [ngClass]="winStateTabs=='2' ? 'previewShow' : 'hiddens'">
+								<button class="btn btn-default desktop_preview pl-3 pr-3" (click)="phoneViewWinProduct=0">
+									<img src="../../../../assets/images/preview-desktop.png">
+								</button>
+								<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary" (click)="phoneViewWinProduct=1">
+									<img src="../../../../assets/images/preview-mobile.png">
+								</button>
+								<h5 class="pr-3">Preview</h5>
+							</div>
+							<!-- win product -->
+
+							<!-- loose -->
+							<div class="border border-dark preview_outer" [ngClass]="winStateTabs=='3' ? 'previewShow' : 'hiddens'">
+								<button class="btn btn-default desktop_preview pl-3 pr-3" (click)="phoneViewLoose=0">
+									<img src="../../../../assets/images/preview-desktop.png">
+								</button>
+								<button class="btn btn-default desktop_preview pl-3 pr-3 border-right border-secondary" (click)="phoneViewLoose=1">
+									<img src="../../../../assets/images/preview-mobile.png">
+								</button>
+								<h5 class="pr-3">Preview</h5>
+							</div>
+							<!-- loose -->
 					</div>
 					<div class="row">
 					<div class="col-md-8">
-						<div class="columnBackground">
+						<div [ngClass]="[phoneViewWinDiscount=='1' ? 'phone' : '',winStateTabs=='1' ? 'visibles' : 'hiddens']">
+							<div id="winDiscountWheel" style="height: 570px;"></div>
+						</div>
+						<div [ngClass]="[phoneViewWinProduct=='1' ? 'phone' : '',winStateTabs=='2' ? 'visibles' : 'hiddens']">
+							<div id="looseWheel" style="height: 570px;"></div>
+						</div>
+						<div [ngClass]="[phoneViewLoose=='1' ? 'phone' : '',winStateTabs=='3' ? 'visibles' : 'hiddens']">
+							<div id="winProductWheel" style="height: 570px;"></div>
+						</div>
+						<!-- <div class="columnBackground">
 							<div class="row">
 								<div class="col-md-6 pb-md-0 pb-sm-5">
 								<img src="./assets/widget-wheel-success.png">
@@ -360,26 +385,24 @@ a.paginate_button.current{
 							</form>
 							</div>
 							</div>
-						</div>
+						</div> -->
 						</div>
 						<div class="col-md-4">
 								<div class="card border-0 form_fields_card">
-
-									<ul class="nav nav-tabs" id="myTab" role="tablist">
+									<ul class="nav nav-tabs" id="myTab" ro9le="tablist">
 										<li class="nav-item">
-										  <a class="nav-link active" id="winDiscount-tab" data-toggle="tab" href="#winDiscount" role="tab" aria-controls="winDiscount" aria-selected="true">Win Discount</a>
+										  <a (click)="winStateTabs = '1'" class="nav-link active" id="winDiscount-tab" data-toggle="tab" href="#winDiscount" role="tab" aria-controls="winDiscount" aria-selected="true">Win Discount</a>
 										</li>
 										<li class="nav-item">
-										  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Win Product</a>
+										  <a (click)="winStateTabs = '2'" class="nav-link" id="profile-tab" data-toggle="tab" href="#winProduct" role="tab" aria-controls="profile" aria-selected="false">Win Product</a>
 										</li>
 										<li class="nav-item">
-										  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Loose</a>
+										  <a (click)="winStateTabs = '3'" class="nav-link" id="contact-tab" data-toggle="tab" href="#loose" role="tab" aria-controls="contact" aria-selected="false">Loose</a>
 										</li>
 									  </ul>
 									  <div class="tab-content" id="myTabContent">
 										  <!-- Win Discount Tab start-->
 										<div class="tab-pane fade show active" id="winDiscount" role="tabpanel" aria-labelledby="winDiscount-tab">
-											
 											<form [formGroup]="widgetform" class="needs-validation" novalidate>
 												<div class="card-body">
 												<div class="form-row">
@@ -392,7 +415,6 @@ a.paginate_button.current{
 												  <input type="text" class="form-control"  formControlName="buttonRedirectURL"  name="buttonRedirectURL">
 												  </div>
 												  </div>	
-												 
 														<div class="form-row">
 														<div class="col-md-12 mb-3">
 															<label for="validationCustom011">Title</label>
@@ -428,23 +450,94 @@ a.paginate_button.current{
 															<div class="col-md-12 mb-3">
 																<label for="validationCustom041">Countdown Timer</label>
 																<input type="number" class="form-control" id="validationCustom041" required formControlName="countdownTimer"  name="countdownTimer">
-																</div>
+															</div>
 														</div>
 													</div>
-													
 												</form>
-
 										</div>
 										<!-- Win Discount Tab End-->
 
 										<!-- Win Product Tab start-->
 
-										<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Win Product</div>
-
-										<!-- Win Product Tab End-->
+										<div class="tab-pane fade" id="winProduct" role="tabpanel" aria-labelledby="profile-tab">
+											<form [formGroup]="widgetform" class="needs-validation" novalidate>
+												<div class="card-body">
+												<div class="form-row">
+												 <label for="validationCustom021" class="col-md-11">Redirect URL ? </label>
+												<div class="custom-control custom-switch"style="padding-left:20px !important;">
+												<input type="checkbox" class="custom-control-input" id="customSwitch3" [checked]="true" formControlName="buttonRedirect" name="buttonRedirect">
+												 <label class="custom-control-label triggerSwitch" for="customSwitch3"></label>
+												 </div>
+												  <div class="col-md-12 mb-3">
+												  <input type="text" class="form-control"  formControlName="buttonRedirectURL"  name="buttonRedirectURL">
+												  </div>
+												  </div>	
+														<div class="form-row">
+														<div class="col-md-12 mb-3">
+															<label for="validationCustom011">Title</label>
+															<input type="text"  [(ngModel)]="headingvaluesSuccess" class="form-control" id="validationCustom011" placeholder="" value="" required formControlName="titleText"  name="titleText">
+															</div>
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom021">Subtitle</label>
+															<input type="text"  [(ngModel)]="labelvaluesSuccess" class="form-control" id="validationCustom021" placeholder="" value="" required formControlName="subtitleText"  name="subtitleText">
+															</div>
+														</div>
+														<div class="form-row">
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom031">Button</label>
+															<input name="buttonTextWin" [(colorPicker)]="buttonTextWin" [style.background]="buttonTextWin" class="color_picker" [cpPosition]="'left'"/>
+															<input name="buttonBGWin" [(colorPicker)]="buttonBGWin" [style.background]="buttonBGWin" class="color_picker mr-1" [cpPosition]="'left'"/>
+															<input type="text"  class="form-control" [(ngModel)]="buttonvaluesSuccess" id="validationCustom031" placeholder="" required formControlName="buttonText"  name="buttonText">
+															</div>
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom041">Close Text</label>
+															<input type="text" class="form-control" id="validationCustom041"  placeholder="" [(ngModel)]="closeText" required formControlName="declineText"  name="declineText">
+															</div>
+														</div>
+													</div>
+												</form>
+										</div>
+										<!-- Win Product Tab end-->
 
 										<!-- Loose Tab start-->
-										<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Loose</div>
+										<div class="tab-pane fade" id="loose" role="tabpanel" aria-labelledby="contact-tab">
+											<form [formGroup]="widgetform" class="needs-validation" novalidate>
+												<div class="card-body">
+												<div class="form-row">
+												 <label for="validationCustom021" class="col-md-11">Redirect URL ? </label>
+												<div class="custom-control custom-switch"style="padding-left:20px !important;">
+												<input type="checkbox" class="custom-control-input" id="customSwitch3" [checked]="true" formControlName="buttonRedirect" name="buttonRedirect">
+												 <label class="custom-control-label triggerSwitch" for="customSwitch3"></label>
+												 </div>
+												  <div class="col-md-12 mb-3">
+												  <input type="text" class="form-control"  formControlName="buttonRedirectURL"  name="buttonRedirectURL">
+												  </div>
+												  </div>	
+														<div class="form-row">
+														<div class="col-md-12 mb-3">
+															<label for="validationCustom011">Title</label>
+															<input type="text"  [(ngModel)]="headingvaluesSuccess" class="form-control" id="validationCustom011" placeholder="" value="" required formControlName="titleText"  name="titleText">
+															</div>
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom021">Subtitle</label>
+															<input type="text"  [(ngModel)]="labelvaluesSuccess" class="form-control" id="validationCustom021" placeholder="" value="" required formControlName="subtitleText"  name="subtitleText">
+															</div>
+														</div>
+														<div class="form-row">
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom031">Button</label>
+															<input name="buttonTextWin" [(colorPicker)]="buttonTextWin" [style.background]="buttonTextWin" class="color_picker" [cpPosition]="'left'"/>
+															<input name="buttonBGWin" [(colorPicker)]="buttonBGWin" [style.background]="buttonBGWin" class="color_picker mr-1" [cpPosition]="'left'"/>
+															<input type="text"  class="form-control" [(ngModel)]="buttonvaluesSuccess" id="validationCustom031" placeholder="" required formControlName="buttonText"  name="buttonText">
+															</div>
+															<div class="col-md-12 mb-3">
+															<label for="validationCustom041">Close Text</label>
+															<input type="text" class="form-control" id="validationCustom041"  placeholder="" [(ngModel)]="closeText" required formControlName="declineText"  name="declineText">
+															</div>
+														</div>
+													</div>
+												</form>
+										</div>
 										<!-- Loose Tab end-->
 									  </div>
 								</div>
@@ -853,6 +946,95 @@ a.paginate_button.current{
 
 			 <!-- Configure background Modal end -->
 
+			  <!-- Configure Slices Color Modal start -->
+
+			  <div class="modal fade" id="modal-slices-background-color" tabindex="-1" role="dialog" aria-labelledby="modal-configure-background" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header pt-3 pb-1">
+                        <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
+                          <div>
+                            <h6 class="mb-0">Configure Slices Color</h6>
+                          </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body pl-0 pr-0 pt-0 pb-0">
+                        <div class="container">
+							<div class="row">  
+								<div class="col-sm-6">
+									<div class="card border-top-0 mb-0 border-bottom-0">
+										<div class="card-header text-center">
+											Choose Template
+										</div>
+										<div class="card-body pl-1 pr-1">
+											<!-- <div class="slices_template_outer">
+												<div class="slices_template_inner" *ngFor="let slicesTemplate1 of slicesTemplate_1" [style.background-color]="slicesTemplate1">
+												</div>	
+											</div> -->
+											<label>
+												<input (change)="sliceTemplate(['#e7c471','#c0dbe9','#ada4d6','#e8c6d6','#ffffe0','#c8e9a5'])" class="slice-template" type="radio" name="sliceColorTemplate" value="['#e7c471','#c0dbe9','#ada4d6','#e8c6d6','#ffffe0','#c8e9a5']" checked>
+												<img src="../../../../assets/img/slices-templates/slice-template-1.png">
+											</label>
+											<label>
+												<input (change)="sliceTemplate(['#cb8486','#a47886','#665f78','#475d78','#375583','#e0b9a1'])" class="slice-template" type="radio" name="sliceColorTemplate" value="['#cb8486','#a47886','#665f78','#475d78','#375583','#e0b9a1']">
+												<img src="../../../../assets/img/slices-templates/slice-template-2.png">
+											</label>
+											<label>
+												<input (change)="sliceTemplate(['#ebc987','#a2c3ab','#8ebfd2','#826b87','#404040','#c77a5f'])" class="slice-template" type="radio" name="sliceColorTemplate" value="['#ebc987','#a2c3ab','#8ebfd2','#826b87','#404040','#c77a5f']">
+												<img src="../../../../assets/img/slices-templates/slice-template-3.png">
+											</label>
+											<label>
+												<input (change)="sliceTemplate(['#cc8053','#a24053','#62659d','#5989c1','#79a96a','#e4bb6a'])" class="slice-template" type="radio" name="sliceColorTemplate" value="['#cc8053','#a24053','#62659d','#5989c1','#79a96a','#e4bb6a']">
+												<img src="../../../../assets/img/slices-templates/slice-template-4.png">
+											</label>
+											<label>
+												<input (change)="sliceTemplate(['#efe6d4','#f9f5ee','#6389a3','#d5e2e7','#ce6845','#8d6639'])" class="slice-template" type="radio" name="sliceColorTemplate" value="['#efe6d4','#f9f5ee','#6389a3','#d5e2e7','#ce6845','#8d6639']">
+												<img src="../../../../assets/img/slices-templates/slice-template-5.png">
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 text-center">
+									<div class="card border-top-0 mb-0 border-bottom-0">
+										<div class="card-header">
+											Personalize Colors
+										</div>
+										<div class="card-body pl-1 pr-1 auto-width">
+											<form>
+												<input (colorPickerClose)="selectSliceColor(slicesColorPallete_1,0)" (colorPickerOpen)="slicesOpenColorPicker(slicesTemplate[0],0)" name="slicesColorPallete_1" [(colorPicker)]="slicesColorPallete_1" [style.background]="isUpdateColorPicker[0] ? slicesTemplate[0] : slicesColorPallete_1" class="color_picker_slices rounded-left" [cpPosition]="'bottom-left'"/>
+
+												<input (colorPickerClose)="selectSliceColor(slicesColorPallete_2,1)" (colorPickerOpen)="slicesOpenColorPicker(slicesTemplate[0],1)" name="slicesColorPallete_2" [(colorPicker)]="slicesColorPallete_2" [style.background]="isUpdateColorPicker[1] ? slicesTemplate[1] : slicesColorPallete_2" class="color_picker_slices border-left-0" [cpPosition]="'bottom-left'"/>
+
+												<input (colorPickerClose)="selectSliceColor(slicesColorPallete_3,2)" (colorPickerOpen)="slicesOpenColorPicker(slicesTemplate[0],2)" name="slicesColorPallete_3" [(colorPicker)]="slicesColorPallete_3" [style.background]="isUpdateColorPicker[2] ? slicesTemplate[2] : slicesColorPallete_3" class="color_picker_slices border-left-0" [cpPosition]="'bottom-left'"/>
+
+												<input (colorPickerClose)="selectSliceColor(slicesColorPallete_4,3)" (colorPickerOpen)="slicesOpenColorPicker(slicesTemplate[0],3)" name="slicesColorPallete_4" [(colorPicker)]="slicesColorPallete_4" [style.background]="isUpdateColorPicker[3] ? slicesTemplate[3] : slicesColorPallete_4" class="color_picker_slices border-left-0" [cpPosition]="'bottom-left'"/>
+
+												<input (colorPickerClose)="selectSliceColor(slicesColorPallete_5,4)" (colorPickerOpen)="slicesOpenColorPicker(slicesTemplate[0],4)" name="slicesColorPallete_5" [(colorPicker)]="slicesColorPallete_5" [style.background]="isUpdateColorPicker[4] ? slicesTemplate[4] : slicesColorPallete_5" class="color_picker_slices border-left-0" [cpPosition]="'bottom-left'"/>
+
+												<input (colorPickerClose)="selectSliceColor(slicesColorPallete_6,5)" (colorPickerOpen)="slicesOpenColorPicker(slicesTemplate[0],5)" name="slicesColorPallete_6" [(colorPicker)]="slicesColorPallete_6" [style.background]="isUpdateColorPicker[5] ? slicesTemplate[5] : slicesColorPallete_6" class="color_picker_slices border-left-0 rounded-right" [cpPosition]="'bottom-left'"/>
+											</form>
+										</div>
+									</div>
+								</div>                   
+							</div>
+						</div>
+                      </div>
+					   <div class="modal-footer pb-2 pt-2">
+						   <button type="button" class="btn btn-success btn-sm">
+							<!-- <span [ngClass]="{'visibles': sliceButtonSave== 1, 'hiddens':sliceButtonSave== 2}">Save</span> -->
+							<span >Save</span>
+							<!-- <span [ngClass]="{'visibles': sliceButtonSave== 2, 'hiddens':sliceButtonSave== 1}" class="spinner-border spinner-border-sm"></span>  -->
+						   </button>
+						   <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+						</div> 
+                    </div>			  
+                </div>
+			</div>
+
+			 <!-- Configure Slices Color Modal end -->
   <app-footer></app-footer>
   
 	

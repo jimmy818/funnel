@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { AuthGuard } from '../../../auth.guard';
-
+declare var WheelPanelPreview: any;
 declare var $;
 @Component({
   selector: 'app-addnew-wheels',
@@ -34,6 +34,14 @@ public barChartOptions: ChartOptions = {
 	public sliceButtonSave = 1;
 	public triggerButtonSave = 1;
 	public copyCodeButton = 1;
+	public slicesTemplate = ['#ffffff','#ffffff','#ffffff','#ffffff','#ffffff','#ffffff'];
+	public slicesTemplate_1 =['#e7c471','#c0dbe9','#ada4d6','#e8c6d6','#ffffe0','#c8e9a5']; 
+	public isUpdateColorPicker = [0,0,0,0,0,0];
+	public winStateTabs = 1;
+	public phoneViewWinState = 0;
+	public phoneViewWinDiscount = 0;
+	public phoneViewWinProduct = 0;
+	public phoneViewLoose = 0;
 
 	public barChartData: ChartDataSets[] = [
 	{ data: [65, 59, 80, 81, 56, 55, 40], label: 'View' },
@@ -87,6 +95,7 @@ public barChartOptions: ChartOptions = {
 	intigrationLink:any;
 	responses:any;
 	allresult:any;
+	crdate:any;
 	
 	/** Define slices array */
 	slicesheredata = [
@@ -105,7 +114,7 @@ public barChartOptions: ChartOptions = {
 	];
 	
 	ngOnInit() {
-		var date = this.datePipe.transform(new Date(),"dd-MM-yyyy HH:mm:ss");
+		this.crdate=this.datePipe.transform(new Date(),"yyyy-dd-MM HH:mm");   
 		this.dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 		this.dataSource.paginator = this.paginator;
 
@@ -124,9 +133,9 @@ public barChartOptions: ChartOptions = {
 			popupType:  ["wheelspinning"],
 			formType:  ["email"],
 			guid:[''],
-			userid:[''],	
-            created_at:[date],
-            updated_at:	[date],
+			userId:[''],	
+            created_at:[this.crdate],
+            updated_at:	[this.crdate],
             version:["1.0"],
             align:["left"]			
 		});
@@ -165,13 +174,168 @@ public barChartOptions: ChartOptions = {
 		this.getresult()
 		/** Calling of functions on lad */
 		this.getWheelByID()
-		
-	if (this._auth.isAuthenticated) {
-	return true;
-	}else{
-	this.router.navigate(['/login']);
-	return false;
-	} 
+		// async function init() {
+		// 	const wrapper = document.getElementById("wheel1");
+		// 	const wheelPanelPreview = new WheelPanelPreview();
+		// 	await wheelPanelPreview.init(wrapper);
+	
+		// 	const backendWheel = {
+		// 	  triggers: {
+		// 		displayLimit: "",
+		// 		delayActive: false,
+		// 		exitIntentActive: false,
+		// 		delayTime: "10"
+		// 	  },
+		// 	  userid: 123456789,
+		// 	  wheelName: "First Test Wheel",
+		// 	  popupType: "wheelspinning",
+		// 	  formType: "email",
+		// 	  slices:this.winDiscountWheelData.slices,
+		// 	//   slices: [
+		// 	// 	{
+		// 	// 	  prizeType: "",
+		// 	// 	  label: "Free shipping",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  winRatio: "1",
+		// 	// 	  id: 1,
+		// 	// 	  bgColor: "#f9ec31",
+		// 	// 	  winText: "5% Off",
+		// 	// 	  coupon: "EXAMPLE"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  prizeType: "product",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "So close!",
+		// 	// 	  id: 2,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#8bc53f",
+		// 	// 	  winText: "Sorry",
+		// 	// 	  coupon: "-"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "10% Off",
+		// 	// 	  id: 3,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#009345",
+		// 	// 	  winText: "10% Off",
+		// 	// 	  coupon: "EXAMPLE",
+		// 	// 	  prizeType: ""
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  winText: "Sorry",
+		// 	// 	  coupon: "-",
+		// 	// 	  prizeType: "",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "No luck today.",
+		// 	// 	  id: 4,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#00a69c"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  prizeType: "",
+		// 	// 	  label: "20% Off",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  winRatio: "1",
+		// 	// 	  id: 5,
+		// 	// 	  bgColor: "#25a9e0",
+		// 	// 	  winText: "20% Off",
+		// 	// 	  coupon: "EXAMPLE"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  coupon: "-",
+		// 	// 	  prizeType: "",
+		// 	// 	  label: "Sorry, try again!",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  winRatio: "1",
+		// 	// 	  id: 6,
+		// 	// 	  bgColor: "#1b75bb",
+		// 	// 	  winText: "Sorry"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  bgColor: "#2b388f",
+		// 	// 	  winText: "30% Off",
+		// 	// 	  coupon: "EXAMPLE",
+		// 	// 	  prizeType: "",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "30% Off",
+		// 	// 	  id: 7,
+		// 	// 	  winRatio: "1"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "Next time!",
+		// 	// 	  id: 8,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#652d90",
+		// 	// 	  winText: "Sorry",
+		// 	// 	  coupon: "-",
+		// 	// 	  prizeType: ""
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  prizeType: "",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "40% Off",
+		// 	// 	  id: 9,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#9e1f63",
+		// 	// 	  winText: "40% Off",
+		// 	// 	  coupon: "EXAMPLE"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  coupon: "-",
+		// 	// 	  prizeType: "",
+		// 	// 	  label: "Almost!",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  winRatio: "1",
+		// 	// 	  id: 10,
+		// 	// 	  bgColor: "#be1e2d",
+		// 	// 	  winText: "Sorry"
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  label: "50% Off!",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  id: 11,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#f05a28",
+		// 	// 	  winText: "50% Off",
+		// 	// 	  coupon: "EXAMPLE",
+		// 	// 	  prizeType: ""
+		// 	// 	},
+		// 	// 	{
+		// 	// 	  prizeType: "",
+		// 	// 	  textColor: "#fff",
+		// 	// 	  label: "Not quite.",
+		// 	// 	  id: 12,
+		// 	// 	  winRatio: "1",
+		// 	// 	  bgColor: "#f6921e",
+		// 	// 	  winText: "Sorry",
+		// 	// 	  coupon: "-"
+		// 	// 	}
+		// 	//   ],
+		// 	  guid: 123456789,
+		// 	  widgetAfterSpin: {
+		// 		subtitleText:
+		// 		  "Don't forget to use the discount code at checkout! Your discount code is:",
+		// 		titleText: "{winText}",
+		// 		buttonText: "CONTINUE & USE DISCOUNT",
+		// 		declineText: "Close"
+		// 	  },
+		// 	  widgetPreSpin: {
+		// 		subtitleText:
+		// 		  "You have a chance to win a nice big fat discount. Are you feeling lucky? Give it a spin.",
+		// 		titleText: "Special bonus unlocked!",
+		// 		declineText: "No, I don't want free gift",
+		// 		buttonText: "Try your Luck",
+		// 		nameField: true,
+		// 		nameInputPlaceholder: "Input your full name"
+		// 	  }
+		// 	};
+		// 	console.log("sssss",backendWheel);
+			
+		// 	await wheelPanelPreview.show(backendWheel);
+		//   }
+		//   init();
 	}
 	/** Define slice form */
 	buildSlicesForm(sliceeeee){
@@ -216,7 +380,7 @@ public barChartOptions: ChartOptions = {
 		}
 		this.addFor.patchValue({
 			guid:Number(this.wheelGuID),
-			userid:this.loginuserUid			
+			userId:Number(this.loginuserUid)		
 		})
 		 //console.log(this.addFor.value)
 		this._wheelService.updatewheel(this.addFor.value)
@@ -253,7 +417,7 @@ public barChartOptions: ChartOptions = {
 		const triggervalue = {
 			triggers:this.addTrigger.value,
 			guid:Number(this.wheelGuID),
-			userid:this.loginuserUid
+			userId:Number(this.loginuserUid)
 		}
 		this._wheelService.updatewheel(triggervalue)
 		.subscribe((response) => {
@@ -289,7 +453,7 @@ public barChartOptions: ChartOptions = {
 		const widgetvalue = {
 		    widgetAfterSpin:this.widgetform.value,
 			guid:Number(this.wheelGuID),
-			userid:this.loginuserUid
+			userId:Number(this.loginuserUid)
 		}
 		this._wheelService.updatewheel(widgetvalue)
 		.subscribe((response) => {
@@ -318,7 +482,7 @@ public barChartOptions: ChartOptions = {
 		const widgetprevalue = {
 		    widgetPreSpin:this.widgetpreform.value,
 			guid:Number(this.wheelGuID),
-			userid:this.loginuserUid
+			userId:Number(this.loginuserUid)
 		}
 		this._wheelService.updatewheel(widgetprevalue)
 		.subscribe((response) => {
@@ -345,7 +509,7 @@ public barChartOptions: ChartOptions = {
 		const slicesdata = {
 			slices:this.sliceItemsArray.value,
 			guid:Number(this.wheelGuID),
-			userid:this.loginuserUid
+			userId:Number(this.loginuserUid)
 		}
 		this._wheelService.updatewheel(slicesdata)
 		.subscribe((response) => {
@@ -411,8 +575,764 @@ public barChartOptions: ChartOptions = {
 	},1000) 
    }
 
+	/** Select Slices Color Start **/
+		selectSliceColor(color,index){
+			switch(index) {
+				case 0:
+				  this.slicesTemplate[0]=color;
+					this.isUpdateColorPicker[0]=1;	
+				  break;
+				case 1:
+					this.slicesTemplate[1]=color;
+					this.isUpdateColorPicker[1]=1;
+				  break;
+				case 2:
+					this.slicesTemplate[2]=color;
+					this.isUpdateColorPicker[2]=1;
+				  break;
+				case 3:
+					this.slicesTemplate[3]=color;
+					this.isUpdateColorPicker[3]=1;
+				  break;
+				case 4:
+					this.slicesTemplate[4]=color;
+					this.isUpdateColorPicker[4]=1;
+				  break;
+				case 5:
+					this.slicesTemplate[5]=color;
+					this.isUpdateColorPicker[5]=1;
+				  break;
+				default:
+				  // code block
+			  }
+			  let arrs = this.slicesTemplate.map(function (arr) {
+				if(typeof arr=='undefined'){
+					arr='#ffffff';
+				}
+				return arr;
+			  });
+			  this.slicesTemplate = arrs;
+		}
+	/** Select Slices Color End **/
+
+	/** Select Slices Color Start **/
+		slicesOpenColorPicker(color,index){
+			switch(index) {
+				case 0:
+					this.isUpdateColorPicker[0]=0;
+				  break;
+				case 1:
+					this.isUpdateColorPicker[1]=0;
+				  break;
+				case 2:
+					this.isUpdateColorPicker[2]=0;
+				  break;
+				case 3:
+					this.isUpdateColorPicker[3]=0;
+				  break;
+				case 4:
+					this.isUpdateColorPicker[4]=0;
+				  break;
+				case 5:
+					this.isUpdateColorPicker[5]=0;
+				  break;
+				default:
+				  // code block
+			  }
+			  let arrs = this.slicesTemplate.map(function (arr) {
+				if(typeof arr=='undefined'){
+					arr='#ffffff';
+				}
+				return arr;
+			  });
+			  this.slicesTemplate = arrs;
+			  
+		}
+	/** Select Slices Color End **/
+
+	/** Select Slices Template Start **/
+		sliceTemplate(colors){
+			this.slicesTemplate = colors;
+			this.isUpdateColorPicker = [1,1,1,1,1,1];
+		}
+		
+	/** Select Slices Template End **/
 	
+	/**	start state wheel data start **/
+
+	getStartStateWheelData(data){
+		async function init() {
+			const wrapper = document.getElementById("startStateWheel");
+			const wheelPanelPreview = new WheelPanelPreview();
+			await wheelPanelPreview.init(wrapper);
 	
+			const backendWheel = {
+			  triggers: {
+				displayLimit: "",
+				delayActive: false,
+				exitIntentActive: false,
+				delayTime: "10"
+			  },
+			  userid: 123456789,
+			  wheelName: "First Test Wheel",
+			  popupType: "wheelspinning",
+			  formType: "email",
+			  slices: [
+				{
+				  prizeType: "",
+				  label: "Free shipping",
+				  textColor: "#fff",
+				  winRatio: "1",
+				  id: 1,
+				  bgColor: "#f9ec31",
+				  winText: "5% Off",
+				  coupon: "EXAMPLE"
+				},
+				{
+				  prizeType: "product",
+				  textColor: "#fff",
+				  label: "So close!",
+				  id: 2,
+				  winRatio: "1",
+				  bgColor: "#8bc53f",
+				  winText: "Sorry",
+				  coupon: "-"
+				},
+				{
+				  textColor: "#fff",
+				  label: "10% Off",
+				  id: 3,
+				  winRatio: "1",
+				  bgColor: "#009345",
+				  winText: "10% Off",
+				  coupon: "EXAMPLE",
+				  prizeType: ""
+				},
+				{
+				  winText: "Sorry",
+				  coupon: "-",
+				  prizeType: "",
+				  textColor: "#fff",
+				  label: "No luck today.",
+				  id: 4,
+				  winRatio: "1",
+				  bgColor: "#00a69c"
+				},
+				{
+				  prizeType: "",
+				  label: "20% Off",
+				  textColor: "#fff",
+				  winRatio: "1",
+				  id: 5,
+				  bgColor: "#25a9e0",
+				  winText: "20% Off",
+				  coupon: "EXAMPLE"
+				},
+				{
+				  coupon: "-",
+				  prizeType: "",
+				  label: "Sorry, try again!",
+				  textColor: "#fff",
+				  winRatio: "1",
+				  id: 6,
+				  bgColor: "#1b75bb",
+				  winText: "Sorry"
+				},
+				{
+				  bgColor: "#2b388f",
+				  winText: "30% Off",
+				  coupon: "EXAMPLE",
+				  prizeType: "",
+				  textColor: "#fff",
+				  label: "30% Off",
+				  id: 7,
+				  winRatio: "1"
+				},
+				{
+				  textColor: "#fff",
+				  label: "Next time!",
+				  id: 8,
+				  winRatio: "1",
+				  bgColor: "#652d90",
+				  winText: "Sorry",
+				  coupon: "-",
+				  prizeType: ""
+				},
+				{
+				  prizeType: "",
+				  textColor: "#fff",
+				  label: "40% Off",
+				  id: 9,
+				  winRatio: "1",
+				  bgColor: "#9e1f63",
+				  winText: "40% Off",
+				  coupon: "EXAMPLE"
+				},
+				{
+				  coupon: "-",
+				  prizeType: "",
+				  label: "Almost!",
+				  textColor: "#fff",
+				  winRatio: "1",
+				  id: 10,
+				  bgColor: "#be1e2d",
+				  winText: "Sorry"
+				},
+				{
+				  label: "50% Off!",
+				  textColor: "#fff",
+				  id: 11,
+				  winRatio: "1",
+				  bgColor: "#f05a28",
+				  winText: "50% Off",
+				  coupon: "EXAMPLE",
+				  prizeType: ""
+				},
+				{
+				  prizeType: "",
+				  textColor: "#fff",
+				  label: "Not quite.",
+				  id: 12,
+				  winRatio: "1",
+				  bgColor: "#f6921e",
+				  winText: "Sorry",
+				  coupon: "-"
+				}
+			  ],
+			  guid: 123456789,
+			  widgetAfterSpin: {
+				subtitleText:
+				  "Don't forget to use the discount code at checkout! Your discount code is:",
+				titleText: "{winText}",
+				buttonText: "CONTINUE & USE DISCOUNT",
+				declineText: "Close"
+			  },
+			  widgetPreSpin: {
+				subtitleText:
+				  "You have a chance to win a nice big fat discount. Are you feeling lucky? Give it a spin.",
+				titleText: "Special bonus unlocked!",
+				declineText: "No, I don't want free gift",
+				buttonText: "Try your Luck",
+				nameField: true,
+				nameInputPlaceholder: "Input your full name"
+			  }
+			};
+			console.log("sssss",backendWheel);
+			
+			await wheelPanelPreview.show(backendWheel);
+		  }
+		  init();
+	}
+
+	/**	start state wheel data end **/
+
+		/**	Wind Discount wheel data start **/
+
+		getWinDiscountWheelData(data){
+			async function init() {
+				const wrapper = document.getElementById("winDiscountWheel");
+				const wheelPanelPreview = new WheelPanelPreview();
+				await wheelPanelPreview.init(wrapper);
+		
+				const backendWheel = {
+				  triggers: {
+					displayLimit: "",
+					delayActive: false,
+					exitIntentActive: false,
+					delayTime: "10"
+				  },
+				  userid: 123456789,
+				  wheelName: "First Test Wheel",
+				  popupType: "wheelspinning",
+				  formType: "email",
+				  slices: [
+					{
+					  prizeType: "",
+					  label: "Free shipping",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 1,
+					  bgColor: "#f9ec31",
+					  winText: "5% Off",
+					  coupon: "EXAMPLE"
+					},
+					{
+					  prizeType: "product",
+					  textColor: "#fff",
+					  label: "So close!",
+					  id: 2,
+					  winRatio: "1",
+					  bgColor: "#8bc53f",
+					  winText: "Sorry",
+					  coupon: "-"
+					},
+					{
+					  textColor: "#fff",
+					  label: "10% Off",
+					  id: 3,
+					  winRatio: "1",
+					  bgColor: "#009345",
+					  winText: "10% Off",
+					  coupon: "EXAMPLE",
+					  prizeType: ""
+					},
+					{
+					  winText: "Sorry",
+					  coupon: "-",
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "No luck today.",
+					  id: 4,
+					  winRatio: "1",
+					  bgColor: "#00a69c"
+					},
+					{
+					  prizeType: "",
+					  label: "20% Off",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 5,
+					  bgColor: "#25a9e0",
+					  winText: "20% Off",
+					  coupon: "EXAMPLE"
+					},
+					{
+					  coupon: "-",
+					  prizeType: "",
+					  label: "Sorry, try again!",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 6,
+					  bgColor: "#1b75bb",
+					  winText: "Sorry"
+					},
+					{
+					  bgColor: "#2b388f",
+					  winText: "30% Off",
+					  coupon: "EXAMPLE",
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "30% Off",
+					  id: 7,
+					  winRatio: "1"
+					},
+					{
+					  textColor: "#fff",
+					  label: "Next time!",
+					  id: 8,
+					  winRatio: "1",
+					  bgColor: "#652d90",
+					  winText: "Sorry",
+					  coupon: "-",
+					  prizeType: ""
+					},
+					{
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "40% Off",
+					  id: 9,
+					  winRatio: "1",
+					  bgColor: "#9e1f63",
+					  winText: "40% Off",
+					  coupon: "EXAMPLE"
+					},
+					{
+					  coupon: "-",
+					  prizeType: "",
+					  label: "Almost!",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 10,
+					  bgColor: "#be1e2d",
+					  winText: "Sorry"
+					},
+					{
+					  label: "50% Off!",
+					  textColor: "#fff",
+					  id: 11,
+					  winRatio: "1",
+					  bgColor: "#f05a28",
+					  winText: "50% Off",
+					  coupon: "EXAMPLE",
+					  prizeType: ""
+					},
+					{
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "Not quite.",
+					  id: 12,
+					  winRatio: "1",
+					  bgColor: "#f6921e",
+					  winText: "Sorry",
+					  coupon: "-"
+					}
+				  ],
+				  guid: 123456789,
+				  widgetAfterSpin: {
+					subtitleText:
+					  "Don't forget to use the discount code at checkout! Your discount code is:",
+					titleText: "{winText}",
+					buttonText: "CONTINUE & USE DISCOUNT",
+					declineText: "Close"
+				  },
+				  widgetPreSpin: {
+					subtitleText:
+					  "You have a chance to win a nice big fat discount. Are you feeling lucky? Give it a spin.",
+					titleText: "Special bonus unlocked!",
+					declineText: "No, I don't want free gift",
+					buttonText: "Try your Luck",
+					nameField: true,
+					nameInputPlaceholder: "Input your full name"
+				  }
+				};
+				console.log("sssss",backendWheel);
+				
+				await wheelPanelPreview.show(backendWheel);
+			  }
+			  init();
+		}
+	
+		/**	Win Discount wheel data end **/
+
+		/**	Win Product wheel data start **/
+
+		getWinProductWheelData(data){
+			async function init() {
+				const wrapper = document.getElementById("winProductWheel");
+				const wheelPanelPreview = new WheelPanelPreview();
+				await wheelPanelPreview.init(wrapper);
+		
+				const backendWheel = {
+					triggers: {
+					displayLimit: "",
+					delayActive: false,
+					exitIntentActive: false,
+					delayTime: "10"
+					},
+					userid: 123456789,
+					wheelName: "First Test Wheel",
+					popupType: "wheelspinning",
+					formType: "email",
+					slices: [
+					{
+						prizeType: "",
+						label: "Free shipping",
+						textColor: "#fff",
+						winRatio: "1",
+						id: 1,
+						bgColor: "#f9ec31",
+						winText: "5% Off",
+						coupon: "EXAMPLE"
+					},
+					{
+						prizeType: "product",
+						textColor: "#fff",
+						label: "So close!",
+						id: 2,
+						winRatio: "1",
+						bgColor: "#8bc53f",
+						winText: "Sorry",
+						coupon: "-"
+					},
+					{
+						textColor: "#fff",
+						label: "10% Off",
+						id: 3,
+						winRatio: "1",
+						bgColor: "#009345",
+						winText: "10% Off",
+						coupon: "EXAMPLE",
+						prizeType: ""
+					},
+					{
+						winText: "Sorry",
+						coupon: "-",
+						prizeType: "",
+						textColor: "#fff",
+						label: "No luck today.",
+						id: 4,
+						winRatio: "1",
+						bgColor: "#00a69c"
+					},
+					{
+						prizeType: "",
+						label: "20% Off",
+						textColor: "#fff",
+						winRatio: "1",
+						id: 5,
+						bgColor: "#25a9e0",
+						winText: "20% Off",
+						coupon: "EXAMPLE"
+					},
+					{
+						coupon: "-",
+						prizeType: "",
+						label: "Sorry, try again!",
+						textColor: "#fff",
+						winRatio: "1",
+						id: 6,
+						bgColor: "#1b75bb",
+						winText: "Sorry"
+					},
+					{
+						bgColor: "#2b388f",
+						winText: "30% Off",
+						coupon: "EXAMPLE",
+						prizeType: "",
+						textColor: "#fff",
+						label: "30% Off",
+						id: 7,
+						winRatio: "1"
+					},
+					{
+						textColor: "#fff",
+						label: "Next time!",
+						id: 8,
+						winRatio: "1",
+						bgColor: "#652d90",
+						winText: "Sorry",
+						coupon: "-",
+						prizeType: ""
+					},
+					{
+						prizeType: "",
+						textColor: "#fff",
+						label: "40% Off",
+						id: 9,
+						winRatio: "1",
+						bgColor: "#9e1f63",
+						winText: "40% Off",
+						coupon: "EXAMPLE"
+					},
+					{
+						coupon: "-",
+						prizeType: "",
+						label: "Almost!",
+						textColor: "#fff",
+						winRatio: "1",
+						id: 10,
+						bgColor: "#be1e2d",
+						winText: "Sorry"
+					},
+					{
+						label: "50% Off!",
+						textColor: "#fff",
+						id: 11,
+						winRatio: "1",
+						bgColor: "#f05a28",
+						winText: "50% Off",
+						coupon: "EXAMPLE",
+						prizeType: ""
+					},
+					{
+						prizeType: "",
+						textColor: "#fff",
+						label: "Not quite.",
+						id: 12,
+						winRatio: "1",
+						bgColor: "#f6921e",
+						winText: "Sorry",
+						coupon: "-"
+					}
+					],
+					guid: 123456789,
+					widgetAfterSpin: {
+					subtitleText:
+						"Don't forget to use the discount code at checkout! Your discount code is:",
+					titleText: "{winText}",
+					buttonText: "CONTINUE & USE DISCOUNT",
+					declineText: "Close"
+					},
+					widgetPreSpin: {
+					subtitleText:
+						"You have a chance to win a nice big fat discount. Are you feeling lucky? Give it a spin.",
+					titleText: "Special bonus unlocked!",
+					declineText: "No, I don't want free gift",
+					buttonText: "Try your Luck",
+					nameField: true,
+					nameInputPlaceholder: "Input your full name"
+					}
+				};
+				console.log("sssss",backendWheel);
+				
+				await wheelPanelPreview.show(backendWheel);
+				}
+				init();
+		}
+	
+		/**	Win Product wheel data end **/
+
+
+		/**	Loose wheel data start **/
+
+		getLooseWheelData(data){
+			async function init() {
+				const wrapper = document.getElementById("looseWheel");
+				const wheelPanelPreview = new WheelPanelPreview();
+				await wheelPanelPreview.init(wrapper);
+		
+				const backendWheel = {
+				  triggers: {
+					displayLimit: "",
+					delayActive: false,
+					exitIntentActive: false,
+					delayTime: "10"
+				  },
+				  userid: 123456789,
+				  wheelName: "First Test Wheel",
+				  popupType: "wheelspinning",
+				  formType: "email",
+				  slices: [
+					{
+					  prizeType: "",
+					  label: "Free shipping",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 1,
+					  bgColor: "#f9ec31",
+					  winText: "5% Off",
+					  coupon: "EXAMPLE"
+					},
+					{
+					  prizeType: "product",
+					  textColor: "#fff",
+					  label: "So close!",
+					  id: 2,
+					  winRatio: "1",
+					  bgColor: "#8bc53f",
+					  winText: "Sorry",
+					  coupon: "-"
+					},
+					{
+					  textColor: "#fff",
+					  label: "10% Off",
+					  id: 3,
+					  winRatio: "1",
+					  bgColor: "#009345",
+					  winText: "10% Off",
+					  coupon: "EXAMPLE",
+					  prizeType: ""
+					},
+					{
+					  winText: "Sorry",
+					  coupon: "-",
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "No luck today.",
+					  id: 4,
+					  winRatio: "1",
+					  bgColor: "#00a69c"
+					},
+					{
+					  prizeType: "",
+					  label: "20% Off",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 5,
+					  bgColor: "#25a9e0",
+					  winText: "20% Off",
+					  coupon: "EXAMPLE"
+					},
+					{
+					  coupon: "-",
+					  prizeType: "",
+					  label: "Sorry, try again!",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 6,
+					  bgColor: "#1b75bb",
+					  winText: "Sorry"
+					},
+					{
+					  bgColor: "#2b388f",
+					  winText: "30% Off",
+					  coupon: "EXAMPLE",
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "30% Off",
+					  id: 7,
+					  winRatio: "1"
+					},
+					{
+					  textColor: "#fff",
+					  label: "Next time!",
+					  id: 8,
+					  winRatio: "1",
+					  bgColor: "#652d90",
+					  winText: "Sorry",
+					  coupon: "-",
+					  prizeType: ""
+					},
+					{
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "40% Off",
+					  id: 9,
+					  winRatio: "1",
+					  bgColor: "#9e1f63",
+					  winText: "40% Off",
+					  coupon: "EXAMPLE"
+					},
+					{
+					  coupon: "-",
+					  prizeType: "",
+					  label: "Almost!",
+					  textColor: "#fff",
+					  winRatio: "1",
+					  id: 10,
+					  bgColor: "#be1e2d",
+					  winText: "Sorry"
+					},
+					{
+					  label: "50% Off!",
+					  textColor: "#fff",
+					  id: 11,
+					  winRatio: "1",
+					  bgColor: "#f05a28",
+					  winText: "50% Off",
+					  coupon: "EXAMPLE",
+					  prizeType: ""
+					},
+					{
+					  prizeType: "",
+					  textColor: "#fff",
+					  label: "Not quite.",
+					  id: 12,
+					  winRatio: "1",
+					  bgColor: "#f6921e",
+					  winText: "Sorry",
+					  coupon: "-"
+					}
+				  ],
+				  guid: 123456789,
+				  widgetAfterSpin: {
+					subtitleText:
+					  "Don't forget to use the discount code at checkout! Your discount code is:",
+					titleText: "{winText}",
+					buttonText: "CONTINUE & USE DISCOUNT",
+					declineText: "Close"
+				  },
+				  widgetPreSpin: {
+					subtitleText:
+					  "You have a chance to win a nice big fat discount. Are you feeling lucky? Give it a spin.",
+					titleText: "Special bonus unlocked!",
+					declineText: "No, I don't want free gift",
+					buttonText: "Try your Luck",
+					nameField: true,
+					nameInputPlaceholder: "Input your full name"
+				  }
+				};
+				console.log("sssss",backendWheel);
+				
+				await wheelPanelPreview.show(backendWheel);
+			  }
+			  init();
+		}
+	
+		/**	Loose wheel data end **/
+
+
+
 	/** Get wheel data by GuID */
 	
 	
@@ -423,6 +1343,14 @@ public barChartOptions: ChartOptions = {
 		this._wheelService.getwheelbyid(GuID)
 	     .subscribe((data)=>{	
 			this.WheelDataByid = JSON.parse(data)
+
+			/** Call Wheels Data Functions Start**/
+			this.getStartStateWheelData(this.WheelDataByid)
+			this.getWinDiscountWheelData(this.WheelDataByid)
+			this.getWinProductWheelData(this.WheelDataByid)
+			this.getLooseWheelData(this.WheelDataByid)
+			/** Call Wheels Data Functions End **/
+
 			if(this.WheelDataByid.data.slices){				
 				this.sliceshere = this.WheelDataByid.data.slices;
 			} else {

@@ -274,6 +274,21 @@ a.paginate_button.current{
     box-shadow: inset 0 1px 1px rgba(31,45,61,.075);
     transition: all .2s ease;
 }
+.color_picker_slices{
+    width: 60px;
+    height: 33px;
+    float:left;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #8492a6;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5c5c5;
+    /* border-radius: .25rem; */
+    box-shadow: inset 0 1px 1px rgba(31,45,61,.075);
+    transition: all .2s ease;
+}
 
 /* Custom Switches */
 .custom_label_position:after {
@@ -321,6 +336,115 @@ a.paginate_button.current{
     /* display: block; */
 }
 
+/* HIDE RADIO */
+.slice-template { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  .slice-template + img {
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  /* CHECKED STYLES */
+  .slice-template:checked + img {
+    border: 2px solid #82baec;
+    border-radius: 5px;
+    width: 100%;
+  }
+  .auto-width{
+    height:249px;
+  }
+  .slices_template_outer{
+    border-radius: 5px;
+    border: 2px solid #FFFFFF;
+    height: 34px;
+  }
+  .slices_template_inner{
+    width: 16.65%;
+    height:30px;
+    display: inline-flex;
+  }
+
+  
+/*Basic Phone styling*/
+/*Basic Phone styling*/
+
+.phone {
+    width: 400px;
+    border: 40px solid #a5a5a5;
+    border-width: 55px 7px;
+    border-radius: 40px;
+    margin: 50px auto;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+  }
+
+  .phone iframe {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#000;
+  }
+  
+  /*Different Perspectives*/
+  
+  /* Table View */
+  .phone.view_1 {
+    -webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);
+            transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);
+    box-shadow: -3px 3px 0 #000, -6px 6px 0 #000, -9px 9px 0 #000, -12px 12px 0 #000, -14px 10px 20px #000;
+  }
+  /*  Front View */
+  .phone.view_2 {
+    -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    box-shadow: 0px 3px 0 #000, 0px 4px 0 #000, 0px 5px 0 #000, 0px 7px 0 #000, 0px 10px 20px #000;
+  }
+  
+  
+  @-webkit-keyframes rotate {
+  
+    0%{-webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);}
+    50%{-webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-40deg);}
+    100%{-webkit-transform: rotateX(50deg) rotateY(0deg) rotateZ(-30deg);}
+  }
+  
+  /* Rotate Animation */
+  
+  .view_1.rotate
+  {
+    -webkit-animation-name:            rotate;
+    -webkit-animation-duration:        15s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+  }
+/*Basic Phone styling*/
+
+.previewShow{
+    display: inline-flex;
+}
+
+  @media screen and (max-width: 600px) {
+      .auto-width{
+          height:auto;   
+      }
+      .phone {
+          width: 100%;
+      }
+  }
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 350px)
 {   
     .custom_label_position:before {
@@ -328,6 +452,9 @@ a.paginate_button.current{
     }
     .custom_label_position:after {
         left: 11.4375rem;
+    }
+    .color_picker_slices{
+        width: 41px;
     }
 }
 @media only screen and (min-device-width: 351px) and (max-device-width: 375px)
@@ -338,6 +465,9 @@ a.paginate_button.current{
     .custom_label_position:after {
         left: 14.4375rem;
     }
+    .color_picker_slices{
+        width: 47px;
+    }
 }
 @media only screen and (min-device-width: 380px) and (max-device-width: 475px)
 {   
@@ -346,5 +476,8 @@ a.paginate_button.current{
     }
     .custom_label_position:after {
         left: 17.4375rem;
+    }
+    .color_picker_slices{
+        width: 56px;
     }
 }
